@@ -1,6 +1,6 @@
 <%-- 
-    Document   : main
-    Created on : 04-19-2019, 05:54:50 PM
+    Document   : mainJefeArea
+    Created on : 04-20-2019, 01:21:29 AM
     Author     : josea
 --%>
 
@@ -12,6 +12,6 @@
         <title>JSP Page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Main Jefe Area!</h1>
     </body>
 </html>

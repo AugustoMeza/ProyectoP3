@@ -7,5 +7,17 @@ and open the template in the editor.
     Created on : 04-19-2019, 03:04:39 PM
     Author     : josea
 */
-@import url('https://fonts.googleapis.com/css?family=Work+Sans:300,600');
+@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+
+body {
+    
+    font-family: 'Work Sans', sans-serif;
+}
+
+.container-main {
+    margin-top: 5%;
+    height:400px;
+    width: 100%;
+    
+}
 
