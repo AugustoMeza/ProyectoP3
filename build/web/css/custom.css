@@ -21,3 +21,11 @@ body {
     
 }
 
+a {
+    color: black;
+}
+
+spacer {
+    width:15px;
+    height:5px;
+}

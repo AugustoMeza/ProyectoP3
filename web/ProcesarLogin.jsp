@@ -47,6 +47,7 @@
                       
                       <c:when test="${r.tipoUsuario eq 2}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
+                        <c:set scope="session" var="loginUserName" value="${param.user}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainJefeDesarrollo.jsp"/>
@@ -55,6 +56,7 @@
                       
                       <c:when test="${r.tipoUsuario eq 3}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
+                        <c:set scope="session" var="loginUserName" value="${param.user}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainJefeArea.jsp"/>
@@ -63,6 +65,7 @@
                       
                       <c:when test="${r.tipoUsuario eq 4}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
+                        <c:set scope="session" var="loginUserName" value="${param.user}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainProgramador.jsp"/>
@@ -71,6 +74,7 @@
                       
                       <c:when test="${r.tipoUsuario eq 5}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
+                        <c:set scope="session" var="loginUserName" value="${param.user}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainEmpleado.jsp"/>
@@ -86,13 +90,11 @@
                   </c:forEach>
             </c:if>
                 
-        <c:if test="${selectQ.rowCount lt 1}">
-            <c:redirect url="index.jsp">
-                <c:param name="errMsg" value="Usuario o contraseña incorrectos" />
-            </c:redirect>
-        </c:if>
-
-            
+            <c:if test="${selectQ.rowCount lt 1}">
+                <c:redirect url="index.jsp">
+                    <c:param name="errMsg" value="Usuario o contraseña incorrectos" />
+                </c:redirect>
+            </c:if>
 
         </c:if>
         
