@@ -10,8 +10,17 @@ and open the template in the editor.
 @import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
 body {
-    
+    /*font-size: 14;*/
     font-family: 'Work Sans', sans-serif;
+    font-size: 14;
+}
+
+.table {
+    font-size: 14;
+}
+
+.table .btn {
+    font-size: 14;
 }
 
 .container-main {
@@ -28,4 +37,21 @@ a {
 spacer {
     width:15px;
     height:5px;
+}
+
+.pill-color-swap .nav-pills a:active {
+    background-color: red;
+    color:white;
+}
+
+.table .btn i{
+    max-width: 0.8em;
+    min-width: 0.5em;
+    max-height: 1em;
+    font-size: 18px;
+}
+
+.modificadores {
+    max-width: 20px;
+    min-width: 18px;
 }

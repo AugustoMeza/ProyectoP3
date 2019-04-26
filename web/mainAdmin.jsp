@@ -39,16 +39,16 @@
                     <a class="nav-link" href="mainAdmin.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Empleados</a>
+                    <a class="nav-link" href="mainAdmin_empleados.jsp">Empleados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Usuarios</a>
+                    <a class="nav-link" href="mainAdmin_usuarios.jsp">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cargos</a>
+                    <a class="nav-link" href="mainAdmin_cargos.jsp">Cargos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Áreas</a>
+                    <a class="nav-link" href="mainAdmin_areas.jsp">Áreas</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Registro DB</a>
@@ -69,11 +69,11 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="card mb-3">
-                            <img class="card-img-top" src="https://picsum.photos/id/274/780/100" alt="Card image cap">
+                            <img class="card-img-top" src="https://picsum.photos/id/274/780/100?blur" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title">Ultimas consultas a la base de datos</h5>
-                                <table class="table">
-                                    <thead>
+                                <table class="table table-responsive-lg border">
+                                    <thead class="thead-dark">
                                       <tr>
                                         <th scope="col">#</th>
                                         <th scope="col">Consulta</th>
@@ -104,37 +104,37 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Empleados</div>
                             <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de empleados</h5>
+                                <h5 class="card-title">Reporte de empleados</h5>
                                 <a href="#" class="btn btn-dark">Generar</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Usuarios</div>
                             <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de usuarios</h5>
+                                <h5 class="card-title">Reporte de usuarios</h5>
                                 <a href="#" class="btn btn-dark">Generar</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Casos</div>
                             <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de casos creados</h5>
+                                <h5 class="card-title">Reporte de casos creados</h5>
                                 <a href="#" class="btn btn-dark">Generar</a>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Solicitudes</div>
                             <div class="card-body">
-                                <h5 class="card-title">Generar reporte de solicitudes creadas</h5>
+                                <h5 class="card-title">Reporte de solicitudes creadas</h5>
                                 <a href="#" class="btn btn-dark">Generar</a>
                             </div>
                         </div>

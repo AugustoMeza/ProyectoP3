@@ -95,9 +95,6 @@
                     <c:param name="errMsg" value="Usuario o contraseña incorrectos" />
                 </c:redirect>
             </c:if>
-
         </c:if>
-        
-
     </body>
 </html>

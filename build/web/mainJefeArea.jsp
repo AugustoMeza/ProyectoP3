@@ -38,13 +38,13 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin.jsp">Principal</a>
+                    <a class="nav-link" href="mainJefeArea.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Solicitudes</a>
+                    <a class="nav-link" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Casos</a>
+                    <a class="nav-link" href="mainJefeArea_casos.jsp">Casos</a>
                 </li>
             </ul>
         </nav>
@@ -89,7 +89,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Solicitudes</div>
                             <div class="card-body">
                                 <h5 class="card-title">Generar un reporte de solicitudes creadas</h5>
@@ -98,7 +98,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Solicitudes</div>
                             <div class="card-body">
                                 <h5 class="card-title">Generar un reporte de estados de solicitudes</h5>
@@ -107,7 +107,7 @@
                         </div>
                     </div>
                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
+                        <div class="card border mb-3" >
                             <div class="card-header">Casos</div>
                             <div class="card-body">
                                 <h5 class="card-title">Generar un reporte caso por solicitud</h5>

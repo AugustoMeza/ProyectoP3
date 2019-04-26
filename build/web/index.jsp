@@ -22,7 +22,11 @@
         <title>JSP Page</title>
     </head>
     <body>
-        
+        <c:if test="${not empty loginUser and not empty loginTipo}">
+            <c:redirect url="errorPage.jsp" >
+                    <c:param name="errMsg" value="Error de login" />
+            </c:redirect>
+        </c:if>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <a class="navbar-brand" href="#"><h5>SGP</h5></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
@@ -73,3 +77,11 @@
         </div>
     </body>
 </html>
+<script>
+    window.onload = function() {
+        if(!window.location.hash) {
+            window.location = window.location + '#loaded';
+            window.location.reload();
+        }
+    }
+</script>
