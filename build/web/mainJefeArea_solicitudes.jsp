@@ -43,7 +43,7 @@
                     <a class="nav-link" href="mainJefeArea.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
+                    <a class="nav-link border-bottom border-dark" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainJefeArea_casos.jsp">Casos</a>
@@ -66,9 +66,9 @@
                     <div class="col-2">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                           <a class="nav-link active pill-color-swap " id="v-pills-ver-tab" data-toggle="tab" href="#v-pills-ver" role="tab" 
-                             aria-controls="v-pills-ver" aria-selected="true">Ver áreas</a>
+                             aria-controls="v-pills-ver" aria-selected="true">Ver Solicitudes</a>
                           <a class="nav-link pill-color-swap" id="v-pills-insertar-tab" data-toggle="tab" href="#v-pills-insertar" role="tab" 
-                             aria-controls="v-pills-insertar" aria-selected="false">Agregar área</a>
+                             aria-controls="v-pills-insertar" aria-selected="false">Agregar Solicitud</a>
                         </div>
                     </div>
                     <div class="col-10 border">
@@ -94,6 +94,15 @@
                                         </div>
                                         <br>
                                     </c:if>
+                                    <c:if test="${param.Eliminada eq 'Solicitud actualizada'}">
+                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                            <strong>Éxito! </strong>La solicitud fue actualizada satisfactoriamente
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <br>
+                                    </c:if>
                                     <div class="col-md-12">
                                         <div class='form-group row'>
                                             <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Solicitud </label>
@@ -106,10 +115,11 @@
                                               <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Solicitante</th>
-                                                <th scope="col">Detalles</th>
+                                                <th scope="col">estado</th>
                                                 <th scope="col">Archivo</th>
                                                 <th scope="col">Creada</th>
-                                                <th scope="col" class=" "></th>
+                                                <th scope="col" class=""></th>
+                                                <th scope="col" class=""></th>
                                                 <th scope="col" class=" "></th>
                                               </tr>
                                             </thead>
@@ -121,27 +131,36 @@
                                                         empleados.apellidos,
                                                         solicitudes.detalleSolicitud,
                                                         solicitudes.archivoPdf,
-                                                        solicitudes.fechaSolicitud
+                                                        solicitudes.fechaSolicitud,
+                                                        estadosdesolicitud.estadoSolicitud
                                                     from solicitudes
                                                     inner join empleados
                                                     on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
+                                                    inner join estadosDeSolicitud
+                                                    on estadosdesolicitud.idEstado = solicitudes.estado
                                                 </sql:query>
 
                                                 <c:forEach var="solicitudes" items="${se.rows}">
                                                     <tr>
-                                                        <td><c:out value="${solicitudes.idSolicitud}"></c:out></td>
-                                                        <td><c:out value="${solicitudes.nombres} ${solicitudes.apellidos}"></c:out></td>
-                                                        <td><c:out value="${solicitudes.detalleSolicitud}"></c:out></td>
-                                                        <td><c:out value="${solicitudes.archivoPdf}"></c:out></td>
-                                                        <td><c:out value="${solicitudes.fechaSolicitud}"></c:out></td>
-                                                        <td class="">
-                                                            <a href="" class="btn btn-info  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">create</i>
+                                                        <td width="10%"><c:out value="${solicitudes.idSolicitud}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes.nombres} ${solicitudes.apellidos}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes.estadoSolicitud}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes.archivoPdf}"></c:out></td>
+                                                        <td width="15%"><c:out value="${solicitudes.fechaSolicitud}"></c:out></td>
+                                                        <td width="5%">
+                                                            <a href="" class="btn btn-info  d-flex justify-content-center align-content-between"
+                                                               data-toggle="modal" data-target="#modal${solicitudes.idSolicitud}">
+                                                                <i class="material-icons mr-1">description</i> 
                                                             </a>
                                                         </td>
-                                                        <td class="">
-                                                            <a href="ProcesarJefeArea.jsp?idSolEliminar=${solicitudes.idSolicitud}" class="btn btn-danger  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">delete_forever</i>
+                                                        <td width="5%">
+                                                            <a href="" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">create</i> 
+                                                            </a>
+                                                        </td>
+                                                        <td width="5%">
+                                                            <a href="ProcesarJefeArea.jsp?idSolicitudEliminar=${solicitudes.idSolicitud}" class="btn btn-danger  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">delete_forever</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -183,5 +202,76 @@
                 </div>
             </div>
         </div> 
+                                            
+    <sql:query var="modals" dataSource="jdbc/mysql">
+        select 
+            solicitudes.idSolicitud,
+            empleados.nombres,
+            empleados.apellidos,
+            solicitudes.detalleSolicitud,
+            solicitudes.archivoPdf,
+            solicitudes.fechaSolicitud,
+            estadosdesolicitud.estadoSolicitud
+        from solicitudes
+        inner join empleados
+        on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
+        inner join estadosDeSolicitud
+        on estadosdesolicitud.idEstado = solicitudes.estado
+    </sql:query>
+
+    <c:forEach var="sol" items="${modals.rows}">
+        <div class="modal fade" id="modal${sol.idSolicitud}" tabindex="-1" role="dialog"
+            aria-labelledby="${sol.idSolicitud}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="">Información de solicitud</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <table class="table table-hover table-responsive-lg border">
+                            <thead class="thead-ligth">
+                              <tr>
+                                <th scope="col">ID Solicitud</th>
+                                <th scope="col">Solicitante</th>
+                                <th scope="col">Fecha de creación</th>
+                                <th scope="col">Estado</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td width="15%"><c:out value="${sol.idSolicitud}"></c:out></td>
+                                    <td width="25%"><c:out value="${sol.nombres} ${sol.apellidos} ${emp.apellidos}"></c:out></td>
+                                    <td width="25%"><c:out value="${sol.fechaSolicitud}"></c:out></td>
+                                    <td width="25%"><c:out value="${sol.estadoSolicitud}"></c:out></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="table table-hover table-responsive-lg border">
+                            <thead class="thead-ligth">
+                                <tr>
+                                  <th scope="col">Detalles</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><c:out value="${sol.detalleSolicitud}"></c:out></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        
+                        <button type="button" class="btn btn-info" data-dismiss="modal">Descargar Archivo</button>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </c:forEach>
     </body>
 </html>

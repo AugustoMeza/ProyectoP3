@@ -36,7 +36,7 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin.jsp">Principal</a>
+                    <a class="nav-link border-bottom border-dark" href="mainAdmin.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainAdmin_empleados.jsp">Empleados</a>

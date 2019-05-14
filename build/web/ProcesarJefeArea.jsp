@@ -20,16 +20,43 @@
     <body>
         <!-- Insert de solicitudes -->     
     <c:if test="${not empty param.idSolicitante}">
+        <jsp:useBean id="now" class="java.util.Date" />
+        <fmt:formatDate var="fechaActual" value="${now}" pattern="YYYY-MM-dd" />
         <sql:update var="insertar" dataSource="jdbc/mysql">
-        insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf) values (?,?,?)
+        insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf, fechaSolicitud, estado) values (?,?,?,?,?)
         <sql:param value="${param.idSolicitante}"/>
         <sql:param value="${param.detalles}"/>
         <sql:param value="${param.archivo}"/>
+        <sql:param value="${now}"/>
+        <sql:param value="1"/>
         </sql:update>
         <c:redirect url="mainJefeArea_solicitudes.jsp">
             <c:param name="IngresoSolicitud" value="Ingreso de solicitud"/>
         </c:redirect>
     </c:if>
         
+    <!-- Delete solicitud--> 
+     <c:if test="${not empty param.idSolicitudEliminar}">
+         <sql:update var="delete" dataSource="jdbc/mysql">
+             delete from solicitudes where idSolicitud = ? 
+             <sql:param value="${param.idSolicitudEliminar}" />
+         </sql:update>
+        <c:redirect url="mainJefeArea_solicitudes.jsp">
+            <c:param name="Eliminada" value="Solicitud Eliminada"/>
+        </c:redirect>
+     </c:if>
+             
+    <!-- Update solicitud--> 
+     <c:if test="${not empty param.idEmpleadoEliminar}">
+         <sql:update var="update" dataSource="jdbc/mysql">
+             update empleados set empleados.activo = 0 where idEmpleado = ? 
+             <sql:param value="${param.idEmpleadoEliminar}" />
+         </sql:update>
+        <c:redirect url="mainAdmin_empleados.jsp">
+            <c:param name="Deshabilitado" value="Empleado Deshabilitado"/>
+        </c:redirect>
+     </c:if>
+
+    
     </body>
 </html>

@@ -45,7 +45,7 @@
                     <a class="nav-link" href="mainAdmin_empleados.jsp">Empleados</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin_usuarios.jsp">Usuarios</a>
+                    <a  class="nav-link border-bottom border-dark" href="mainAdmin_usuarios.jsp">Usuarios</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainAdmin_cargos.jsp">Cargos</a>
@@ -109,8 +109,8 @@
                                                     <input type='text' class='form-control' id="inputBuscarUsuarios">
                                                 </div>
                                             </div>
-                                            <table class="table table-responsive-lg border">
-                                                <thead class="thead-dark">
+                                            <table class="table table-hover table-responsive-lg border">
+                                                <thead class="thead-ligth">
                                                   <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nombre usuario</th>
@@ -138,19 +138,20 @@
 
                                                     <c:forEach var="usuario" items="${s2.rows}">
                                                         <tr>
-                                                            <td><c:out value="${usuario.idUsuario}"></c:out></td>
-                                                            <td><c:out value="${usuario.nombreUsuario}"></c:out></td>
-                                                            <td><c:out value="${usuario.nombreTipoUsuario}"></c:out></td>
-                                                            <td><c:out value="${usuario.nombres} ${usuario.apellidos}"></c:out></td>
-                                                            <td>
-                                                                <a href="" class="btn btn-info  d-flex justify-content-center align-content-between">
+                                                            <td width="10%"><c:out value="${usuario.idUsuario}"></c:out></td>
+                                                            <td width="15%"><c:out value="${usuario.nombreUsuario}"></c:out></td>
+                                                            <td width="25%"><c:out value="${usuario.nombreTipoUsuario}"></c:out></td>
+                                                            <td width="30%"><c:out value="${usuario.nombres} ${usuario.apellidos}"></c:out></td>
+                                                            <td width="10%">
+                                                                <a data-toggle="tooltip" title="Editar" data-placement="top"
+                                                                    href="" class="btn btn-info  botones_accion justify-content-center align-content-between">
                                                                     <i class="material-icons mr-1">create</i>
                                                                 </a>
                                                             </td>
-                                                            <td>
+                                                            <td width="10%">
                                                                 <a data-toggle="tooltip" title="Eliminar" data-placement="top"
-                                                                    href="ProcesarAdmin.jsp?idUsuarioEliminar=${usuario.idUsuario}" class="btn btn-danger  d-flex justify-content-center align-content-between">
-                                                                    <i class="material-icons mr-1">delete_forever</i>
+                                                                    href="ProcesarAdmin.jsp?idUsuarioEliminar=${usuario.idUsuario}" class="btn btn-danger botones_accion justify-content-center align-content-between">
+                                                                    <i class="material-icons mr-1">delete_outline</i>
                                                                 </a>
                                                             </td>
                                                         </tr>

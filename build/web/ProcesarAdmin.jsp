@@ -118,6 +118,61 @@
         </c:redirect>
      </c:if>
              
-             
+         
+     <!-- update empleado -->
+     <c:if test="${not empty param.nombreU}">
+        <sql:update var="actualizar" dataSource="jdbc/mysql">
+        update empleados set 
+        nombres=?, 
+        apellidos=?, 
+        cargo=?, 
+        area=?, 
+        documentoUnico=?, 
+        email=?,
+        telefono=?, 
+        jefe=?,
+        activo=?
+        where idEmpleado = ?
+        <sql:param value="${param.nombreU}"/>
+        <sql:param value="${param.apellido}"/>
+        <sql:param value="${param.selectCargo}"/>
+        <sql:param value="${param.selectArea}"/>
+        <sql:param value="${param.dui}"/>
+        <sql:param value="${param.email}"/>
+        <sql:param value="${param.telefono}"/>
+        <sql:param value="${param.selectJefe}"/>
+        <sql:param value="${param.selectActivo}"/>
+        <sql:param value="${param.idEmpleado}"/>
+        </sql:update>
+        <c:redirect url="mainAdmin_empleados.jsp">
+            <c:param name="Actualizado" value="empleado actualizado"/>
+        </c:redirect>
+    </c:if>
+        
+     <!-- update usuario -->
+     <c:if test="${not empty param.nombreUsuarioU}">
+        <sql:update var="actualizar" dataSource="jdbc/mysql">
+        update empleados set 
+        nombres=?, 
+        apellidos=?, 
+        cargo=?, 
+        area=?, 
+        documentoUnico=?, 
+        email=?,
+        telefono=?, 
+        jefe=?,
+        activo=?
+        where idEmpleado = ?
+        <sql:param value="${param.nombreU}"/>
+        <sql:param value="${param.apellido}"/>
+        <sql:param value="${param.selectCargo}"/>
+        <sql:param value="${param.selectArea}"/>
+        <sql:param value="${param.dui}"/>
+        </sql:update>
+        <c:redirect url="mainAdmin_usuarios.jsp">
+            <c:param name="Actualizado" value="usuario actualizado"/>
+        </c:redirect>
+    </c:if>
+     
     </body>
 </html>

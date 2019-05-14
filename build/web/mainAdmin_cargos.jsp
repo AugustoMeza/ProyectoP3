@@ -48,7 +48,7 @@
                     <a class="nav-link" href="mainAdmin_usuarios.jsp">Usuarios</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin_cargos.jsp">Cargos</a>
+                    <a class="nav-link border-bottom border-dark" href="mainAdmin_cargos.jsp">Cargos</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainAdmin_areas.jsp">Áreas</a>
@@ -109,8 +109,8 @@
                                                     <input type='text' class='form-control' id="inputBuscarUsuarios">
                                                 </div>
                                             </div>
-                                            <table class="table table-responsive-lg border">
-                                                <thead class="thead-dark">
+                                            <table class="table table-hover table-responsive-lg border">
+                                                <thead class="thead-ligth">
                                                   <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nombre Cargo</th>
@@ -125,16 +125,16 @@
 
                                                     <c:forEach var="cargos" items="${s2.rows}">
                                                         <tr>
-                                                            <td><c:out value="${cargos.idCargo}"></c:out></td>
-                                                            <td><c:out value="${cargos.nombreCargo}"></c:out></td>
-                                                            <td>
+                                                            <td width="20%"><c:out value="${cargos.idCargo}"></c:out></td>
+                                                            <td width="50%"><c:out value="${cargos.nombreCargo}"></c:out></td>
+                                                            <td width="15%">
                                                                 <a href="" class="btn btn-info  d-flex justify-content-center align-content-between">
                                                                     <i class="material-icons mr-1">create</i> Editar
                                                                 </a>
                                                             </td>
-                                                            <td>
+                                                            <td width="15%">
                                                                 <a href="ProcesarAdmin.jsp?idCargoEliminar=${cargos.idCargo}" class="btn btn-danger  d-flex justify-content-center align-content-between">
-                                                                    <i class="material-icons mr-1">delete_forever</i> Eliminar
+                                                                    <i class="material-icons mr-1">delete_outline</i> Eliminar
                                                                 </a>
                                                             </td>
                                                         </tr>

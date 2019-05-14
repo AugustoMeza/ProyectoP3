@@ -1,4 +1,10 @@
 <%-- 
+    Document   : mainJefeDesarrollo_solicitudes
+    Created on : 04-26-2019, 02:37:46 AM
+    Author     : josea
+--%>
+
+<%-- 
     Document   : mainJefeArea_solicitudes
     Created on : 04-26-2019, 01:15:25 AM
     Author     : josea
@@ -43,7 +49,7 @@
                     <a class="nav-link" href="mainJefeArea.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link border-bottom border-dark" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
+                    <a class="nav-link" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainJefeArea_casos.jsp">Casos</a>
@@ -66,9 +72,9 @@
                     <div class="col-2">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                           <a class="nav-link active pill-color-swap " id="v-pills-ver-tab" data-toggle="tab" href="#v-pills-ver" role="tab" 
-                             aria-controls="v-pills-ver" aria-selected="true">Ver Solicitudes</a>
+                             aria-controls="v-pills-ver" aria-selected="true">Solicitudes sin responder</a>
                           <a class="nav-link pill-color-swap" id="v-pills-insertar-tab" data-toggle="tab" href="#v-pills-insertar" role="tab" 
-                             aria-controls="v-pills-insertar" aria-selected="false">Agregar Solicitud</a>
+                             aria-controls="v-pills-insertar" aria-selected="false">Solicitudes resueltas</a>
                         </div>
                     </div>
                     <div class="col-10 border">
@@ -120,7 +126,7 @@
                                                 <th scope="col">Creada</th>
                                                 <th scope="col" class=""></th>
                                                 <th scope="col" class=""></th>
-                                                <th scope="col" class=" "></th>
+                                                
                                               </tr>
                                             </thead>
                                             <tbody>
@@ -153,14 +159,10 @@
                                                                 <i class="material-icons mr-1">description</i> 
                                                             </a>
                                                         </td>
+                                                        
                                                         <td width="5%">
-                                                            <a href="" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">create</i> 
-                                                            </a>
-                                                        </td>
-                                                        <td width="5%">
-                                                            <a href="ProcesarJefeArea.jsp?idSolicitudEliminar=${solicitudes.idSolicitud}" class="btn btn-danger  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">delete_forever</i> 
+                                                            <a href="ProcesarJefeArea.jsp?idSolicitudResponder=${solicitudes.idSolicitud}" class="btn btn-success  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">add</i> 
                                                             </a>
                                                         </td>
                                                     </tr>

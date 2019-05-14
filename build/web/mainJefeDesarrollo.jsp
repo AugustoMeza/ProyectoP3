@@ -39,16 +39,16 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin.jsp">Principal</a>
+                    <a class="nav-link" href="mainJefeDesarrollo.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Solicitudes</a>
+                    <a class="nav-link" href="mainJefeDesarrollo_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Casos</a>
+                    <a class="nav-link" href="mainJefeDesarrollo_casos.jsp">Casos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bitàcoras</a>
+                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
                 </li>
             </ul>
         </nav>

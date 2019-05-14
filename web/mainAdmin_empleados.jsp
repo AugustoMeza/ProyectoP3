@@ -46,7 +46,7 @@
                     <a class="nav-link" href="mainAdmin.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin_empleados.jsp">Empleados</a>
+                    <a class="nav-link border-bottom border-dark" href="mainAdmin_empleados.jsp">Empleados</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainAdmin_usuarios.jsp">Usuarios</a>
@@ -67,7 +67,7 @@
         <div class="container">
             <div class="container-responsive">
                 <div class="row">
-                    <br><br><br>
+                    
                    <h2 style="margin-left:15px">Empleados</h2>
                 </div>
             </div>
@@ -106,6 +106,15 @@
                                         </div>
                                         <br>
                                     </c:if>
+                                    <c:if test="${param.Actualizado eq 'empleado actualizado'}">
+                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
+                                            <strong>Éxito! </strong>El empleado fue actualizado satisfactoriamente
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <br>
+                                    </c:if>
                                     <div class="col-md-12">
                                         <div class='form-group row'>
                                             <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar empleado </label>
@@ -113,14 +122,13 @@
                                                 <input type='text' class='form-control' id="inputBuscarUsuarios">
                                             </div>
                                         </div>
-                                        <table class="table table-responsive-lg border">
-                                            <thead class="thead-dark">
+                                        <table class="table table-hover table-responsive-lg border">
+                                            <thead class="thead-ligth">
                                               <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Nombre</th>
                                                 <th scope="col">Cargo</th>
                                                 <th scope="col">Area</th>
-                                                <th scope="col">DUI</th>
                                                 <th scope="col">Email</th>
                                                 <th scope="col">Telefono</th>
                                                 <th scope="col"></th>
@@ -133,13 +141,14 @@
                                                     select 
                                                         empleados.idEmpleado, 
                                                         empleados.nombres, 
-                                                        empleados.apellidos, 
-                                                        cargos.nombreCargo, 
-                                                        areas.nombreArea, 
+                                                        empleados.apellidos,
                                                         empleados.documentoUnico, 
                                                         empleados.email, 
                                                         empleados.telefono,
-                                                        empleados.activo
+                                                        empleados.activo,
+                                                        empleados.jefe,
+                                                        cargos.nombreCargo, 
+                                                        areas.nombreArea
                                                     from empleados 
                                                     inner join cargos on 
                                                         empleados.cargo = cargos.idCargo 
@@ -149,22 +158,22 @@
 
                                                 <c:forEach var="empleados" items="${se.rows}">
                                                     <c:if test="${empleados.activo == 0}">
-                                                         <% System.out.println(pageContext.findAttribute("registro deshabilitado") ); %>
+                                                        
                                                         <tr>
-                                                            <td><c:out value="${empleados.idEmpleado}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombres} ${empleados.apellidos}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombreArea}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombreCargo}"></c:out></td>
-                                                            <td><c:out value="${empleados.documentoUnico}"></c:out></td>
-                                                            <td><c:out value="${empleados.email}"></c:out></td>
-                                                            <td><c:out value="${empleados.telefono}"></c:out></td>
-                                                            <td>
-                                                                <a href="" class="btn btn-dark  d-flex justify-content-center align-content-between">
+                                                            <td width="6%"><c:out value="${empleados.idEmpleado}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombres} ${empleados.apellidos}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombreArea}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombreCargo}"></c:out></td>
+                                                            <td width="16%"><c:out value="${empleados.email}"></c:out></td>
+                                                            <td width="6%"><c:out value="${empleados.telefono}"></c:out></td>
+                                                            <td width="4">
+                                                                <a href="" class="btn btn-info  d-flex justify-content-center align-content-between"
+                                                                   data-toggle="modal" data-target="#modal${empleados.idEmpleado}">
                                                                     <i class="material-icons mr-1">description</i>
                                                                 </a>
                                                             </td>
-                                                            <td>
-                                                                <a href="" class="btn btn-info  d-flex justify-content-center align-content-between">
+                                                            <td width="4">
+                                                                <a href="update_mainAdmin_empleados.jsp?id=${empleados.idEmpleado}" class="btn btn-primary  d-flex justify-content-center align-content-between">
                                                                     <i class="material-icons mr-1">create</i>
                                                                 </a>
                                                             </td>
@@ -174,30 +183,31 @@
                                                     </c:if>
                                                     <c:if test="${empleados.activo == 1}">
                                                         <tr>
-                                                            <td><c:out value="${empleados.idEmpleado}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombres} ${empleados.apellidos}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombreArea}"></c:out></td>
-                                                            <td><c:out value="${empleados.nombreCargo}"></c:out></td>
-                                                            <td><c:out value="${empleados.documentoUnico}"></c:out></td>
-                                                            <td><c:out value="${empleados.email}"></c:out></td>
-                                                            <td><c:out value="${empleados.telefono}"></c:out></td>
-                                                            <td>
-                                                                <a href="" class="btn btn-dark  d-flex justify-content-center align-content-between">
+                                                            <td width="5%"><c:out value="${empleados.idEmpleado}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombres} ${empleados.apellidos}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombreArea}"></c:out></td>
+                                                            <td width="20%"><c:out value="${empleados.nombreCargo}"></c:out></td>
+                                                            <td width="15%"><c:out value="${empleados.email}"></c:out></td>
+                                                            <td width="5%"><c:out value="${empleados.telefono}"></c:out></td>
+                                                            <td width="5%">
+                                                                <button  type="button" href="" class="btn btn-info  d-flex justify-content-center align-content-between"
+                                                                 data-toggle="modal" data-target="#modal${empleados.idEmpleado}" >
                                                                     <i class="material-icons mr-1">description</i>
-                                                                </a>
+                                                                </button>
                                                             </td>
-                                                            <td>
-                                                                <a href="" class="btn btn-info  d-flex justify-content-center align-content-between">
+                                                            <td width="5%">
+                                                                <a href="update_mainAdmin_empleados.jsp?id=${empleados.idEmpleado}" class="btn btn-primary  d-flex justify-content-center align-content-between">
                                                                     <i class="material-icons mr-1">create</i>
                                                                 </a>
                                                             </td>
-                                                            <td>
+                                                            <td width="5%">
                                                                 <a href="ProcesarAdmin.jsp?idEmpleadoEliminar=${empleados.idEmpleado}" class="btn btn-danger  d-flex justify-content-center align-content-between">
-                                                                    <i class="material-icons mr-1">delete_forever</i>
+                                                                    <i class="material-icons mr-1">delete_outline</i>
                                                                 </a>
                                                             </td>
                                                         </tr>
-                                                    </c:if>    
+                                                    </c:if>
+                                                                          
                                                 </c:forEach>
                                             </tbody>
                                         </table>
@@ -210,13 +220,13 @@
                                     <br>
                                     <div class="col-md-6 offset-md-3 ">
                         
-                                        <form class="" name="cargo" action="ProcesarAdmin.jsp" method="POST">
+                                        <form class="" name="empleados" action="ProcesarAdmin.jsp" method="POST">
                                             <div class="form-group">
-                                                <label class="" for="NombreUsuario">Nombre de empleado</label>
+                                                <label class="" for="nombre">Nombre de empleado</label>
                                                 <input class="form-control" name="nombre" id="nombre" type="text">
                                             </div>
                                             <div class="form-group">
-                                                <label class="" for="NombreUsuario">Apellido de empleado</label>
+                                                <label class="" for="apellido">Apellido de empleado</label>
                                                 <input class="form-control" name="apellido" id="apellido" type="text">
                                             </div>
                                             <div class="form-group">        
@@ -288,5 +298,97 @@
                 </div>
             </div>
         </div> 
+        
+    <sql:query var="modals" dataSource="jdbc/mysql">
+        select 
+            empleados.idEmpleado, 
+            empleados.nombres, 
+            empleados.apellidos, 
+            cargos.nombreCargo, 
+            areas.nombreArea, 
+            empleados.documentoUnico, 
+            empleados.email,
+            empleados.jefe,
+            empleados.telefono,
+            empleados.activo
+        from empleados 
+        inner join cargos on 
+            empleados.cargo = cargos.idCargo 
+        inner join areas on
+            areas.idArea = empleados.area
+    </sql:query>
+
+    <c:forEach var="emp" items="${modals.rows}">
+        <div class="modal fade" id="modal${emp.idEmpleado}" tabindex="-1" role="dialog"
+            aria-labelledby="${emp.idEmpleado}" aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="">Información de empleado</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body">
+                            <table class="table table-hover table-responsive-lg border">
+                                <thead class="thead-ligth">
+                                  <tr>
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Nombre</th>
+                                    <th scope="col">Cargo</th>
+                                    <th scope="col">Area</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">DUI</th>
+                                    <th scope="col">Telefono</th>
+                                    <th scope="col">Jefe</th>
+                                    <th scope="col">Activo</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td width="5%"><c:out value="${emp.idEmpleado}"></c:out></td>
+                                        <td width="15%"><c:out value="${emp.nombres} ${emp.apellidos}"></c:out></td>
+                                        <td width="15%"><c:out value="${emp.nombreArea}"></c:out></td>
+                                        <td width="15%"><c:out value="${emp.nombreCargo}"></c:out></td>
+                                        <td width="20%"><c:out value="${emp.email}"></c:out></td>
+                                        <td width="5%"><c:out value="${emp.documentoUnico}"></c:out></td>
+                                        <td width="5%"><c:out value="${emp.telefono}"></c:out></td>
+                                        
+                                        <sql:query var="selectJefe" dataSource="jdbc/mysql">
+                                            select empleados.nombres, empleados.apellidos 
+                                            from empleados where empleados.idEmpleado = ?
+                                            <sql:param value="${emp.jefe}"/>
+                                        </sql:query>
+                                            
+                                        <c:forEach var="jefe" items="${selectJefe.rows}">
+                                            
+                                            <td width="15%"><c:out value="${jefe.nombres} ${jefe.apellidos}"></c:out></td>
+                                            
+                                        </c:forEach>
+                                        
+                                        
+                                        <td width="5%">
+                                            <c:if test="${emp.activo == 0}">
+                                                   <input type="checkbox" unchecked disabled>
+                                            </c:if>
+                                            <c:if test="${emp.activo == 1}">
+                                                   <input type="checkbox" checked disabled>
+                                            </c:if>
+                                        </td>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        </div>
+                </div>
+            </div>
+        </div>
+        
+        
+    </c:forEach>
+               
     </body>
 </html>
