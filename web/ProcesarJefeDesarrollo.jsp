@@ -108,7 +108,24 @@
             <c:redirect url="mainJefeDesarrollo.jsp">
                 
             </c:redirect>
+        </c:if>
+                
+        <!-- Insertar elementos de caso -->    
+        <c:if test="${not empty param.n1}">
+                                    
+            <sql:update var="InsertElementos" dataSource="jdbc/mysql">
+                insert into elementoscaso (descripcionElemento, idCaso) 
+                values (?,?)
+                
+                <sql:param value="${param.n1}" />
+                <sql:param value="${param.idCaso}" />
 
+            </sql:update>
+
+            <c:redirect url="mainJefeDesarrollo_crearElementosCaso.jsp" >
+                <c:param value="ElementoAgregado" name="ElementoAgregado"/>
+                <c:param value="${param.idCaso}" name="idCaso"/>
+            </c:redirect>
         </c:if> 
     </body>
 </html>

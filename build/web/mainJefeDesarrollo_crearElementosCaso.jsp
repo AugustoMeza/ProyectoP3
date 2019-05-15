@@ -1,9 +1,8 @@
 <%-- 
-    Document   : mainJefeDesarrollo_crearCaso
-    Created on : 05-14-2019, 05:16:07 PM
+    Document   : mainJefeDesarrollo_crearElmentosCaso
+    Created on : 05-15-2019, 01:25:44 PM
     Author     : josea
 --%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -45,7 +44,7 @@
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link d-flex justify-content-center align-content-between"
-                       href="mainJefeDesarrollo_solicitudes.jsp">
+                       href="mainJefeDesarrollo_casos.jsp">
                         <i class="material-icons mr-1">keyboard_backspace</i>Atrás</a>
                 </li>
             </ul>
@@ -55,61 +54,64 @@
         <div class="container">
             <div class="container-responsive">
                 <div class="row col-lg-12">
-                    
-                    <div class="col-lg-8 offset-lg-2">
-                        <h4>Información caso</h4>
+                    <div class="col-lg-6">
+                        <h4>Agregar elementos</h4>
                         <hr>
                         <form action="ProcesarJefeDesarrollo.jsp" method="POST">
                             <div class="form-group sr-only">
-                                <input value="${param.idEmpleado}" name="idJefeDesarrollo" id="idJefeDesarrollo">
-                                <input value="${param.idSolicitudC}" name="idSolicitudCaso" id="idSolicitudCaso">
-                                <input value="${param.idRevisor}" name="idRevisor" id="idRevisor">
+                                <input value="${param.idCaso}" name="idCaso" id="idCaso">
                             </div>
-                            <div class="form-group">
-                                <label>Detalles del caso</label>
-                                <textarea class="form-control" rows="5" id="detalleCaso" name='detalleCaso'></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label>Porgramador a cargo</label>
-                                    <select class="form-control" id="idProgramador" name="idProgramador">
-                                        <option value=""> -- Seleccione un programador</option>
-                                        <sql:query var="programadores" dataSource="jdbc/mysql" >
-                                            Select * from empleados where jefe = ?
-                                            <sql:param value="${loginEmpleado}" />
-                                        </sql:query>
-                                        <c:forEach var="programador" items="${programadores.rows}">
-                                            <option value="${programador.idEmpleado}">${programador.nombres} ${programador.apellidos}</option>
-                                        </c:forEach>
-                                    </select>
+                              
+                            <div class="row col-12">
+                                <div class="form-group col-2 align-items-center d-flex justify-content-center align-content-between" id="">
+                                    <p>Elemento</p>
+                                    
                                 </div>
-                                <div class="form-group col">
-                                    <label>Fecha límite</label>
-                                    <input class="form-control"  type="text" id="fechaLimite" name="fechaLimite">
+                                <div class="form-group col-8" id="">
+                                    
+                                    <input type="text" class="form-control" id="n1" name="n1"/>
                                 </div>
-                            </div>
-                            
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label>Archivo PDF</label>
-                                    <input class="form-control-file btn-info border" type="file">
-                                </div>
-                                <div class="form-group col">
-                                    <br>
-                                    <button class="btn btn-success float-right">Crear caso</button>
+                                <div class="form-group col-2" style="width:100%">
+                                    
+                                    <button class="btn btn-success float-left">Agregar</button>
                                 </div>
                             </div>
                         </form> 
                     </div>
+                    <div class="col-lg-6">
+                        <h4>Elementos del caso</h4>
+                        <hr>
+                        <table class="table table-responsive-lg border">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">N</th>
+                                    <th scope="col">Elementos</th>
+                                </tr>
+                            </thead>
+                            
+                            <c:set value="${0}" var="contador"/> 
+                            <sql:query var="elementos" dataSource="jdbc/mysql">
+                                SELECT * FROM elementoscaso where idCaso = ?
+                                <sql:param value="${param.idCaso}" />
+                            </sql:query>
+
+                            <c:forEach var="elemento" items="${elementos.rows}">
+                                <tr>
+                                    <td>${contador + 1}</td>
+                                    <td>${elemento.descripcionElemento}</td>
+                                </tr>
+                                <c:set var="contador" value="${contador + 1}"></c:set>
+                            </c:forEach>
+                            
+                        </table>
+                    </div>
                 </div>
+                          
             </div>
         </div> 
     </body>
 </html>
 
 <script>
-    $('#fechaLimite').datepicker({
-        uiLibrary: 'bootstrap4',
-         format: 'yyyy-mm-dd'
-    });
+
 </script>
