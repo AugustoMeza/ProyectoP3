@@ -23,12 +23,13 @@
         <jsp:useBean id="now" class="java.util.Date" />
         <fmt:formatDate var="fechaActual" value="${now}" pattern="YYYY-MM-dd" />
         <sql:update var="insertar" dataSource="jdbc/mysql">
-        insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf, fechaSolicitud, estado) values (?,?,?,?,?)
+        insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf, fechaSolicitud, estado, area) values (?,?,?,?,?,?)
         <sql:param value="${param.idSolicitante}"/>
         <sql:param value="${param.detalles}"/>
         <sql:param value="${param.archivo}"/>
         <sql:param value="${now}"/>
         <sql:param value="1"/>
+        <sql:param value="${param.area}"/>
         </sql:update>
         <c:redirect url="mainJefeArea_solicitudes.jsp">
             <c:param name="IngresoSolicitud" value="Ingreso de solicitud"/>

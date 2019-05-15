@@ -10,22 +10,17 @@ and open the template in the editor.
 @import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
 body {
-    /*font-size: 14;*/
     font-family: 'Work Sans', sans-serif;
-    font-size: 14;
-    
+    font-size: 14px; 
 }
-
 
 .container {
     width: 100%;
     
 }
 
-
-
 .table {
-    font-size: 14;
+    font-size: 14px;
 }
 
 .table {
@@ -33,7 +28,7 @@ body {
 }
 
 .table .btn {
-    font-size: 14;
+    font-size: 14px;
 }
 
 .container-main {
@@ -70,15 +65,50 @@ a {
 
 * {
   border-radius: 0 !important;
+  
 }
 
 .navbar .nav-item .active {
-  ;
+  text-decoration: underline;
+  text-underline-position: under;
+  width:100%;
 }
-
 
 
 .nav .nav-pills .nav-link :active{
    background-color: #222;
    color:white;
 }
+
+.cuadro_informativo1 {
+    width:100%;
+    color:white;
+    text-align: center;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #2193b0, #37a3bf, #4ab3ce, #5cc4de, #6dd5ed);
+}
+
+.cuadro_informativo2 {
+    width:100%;
+    color:white;
+    text-align: center;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #56ab2f, #6bb83c, #80c549, #94d356, #a8e063);
+}
+
+.cuadro_informativo3 {
+    width:100%;
+    color:white;
+    text-align: center;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #eb3349, #ee3f47, #f04946, #f25344, #f45c43);
+}
+
+.cuadro_informativo4 {
+    width:100%;
+    color:white;
+    text-align: center;
+    font-size: 3em;
+    background-image: linear-gradient(to right, #4568dc, #7266d2, #8e66c8, #a267bd, #b06ab3);
+}
+

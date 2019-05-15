@@ -111,7 +111,7 @@
                                             </div>
                                         </div>
                                         <table class="table table-hover table-responsive-lg border">
-                                            <thead class="thead-ligth">
+                                            <thead class="thead-dark">
                                               <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Nombre</th>
@@ -151,7 +151,7 @@
                                     <br>
                                     <div class="col-md-6 offset-md-3 ">
                         
-                                        <form class="" name="cargo" action="ProcesarAdmin.jsp" method="POST">
+                                        <form class="" name="areas" action="ProcesarAdmin.jsp" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Nombre de area</label>
                                                 <input class="form-control" name="nombreArea" id="nombreArea" type="text">

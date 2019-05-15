@@ -175,8 +175,15 @@
                                     <h3 class="text-center">Nueva solicitud</h3>
                                     <br>
                                     <div class="col-md-10 offset-md-1 ">
+                                        <sql:query var="areaE" dataSource="jdbc/mysql">
+                                            SELECT empleados.area from empleados where idEmpleado = ?
+                                            <sql:param value="${loginEmpleado}"/>
+                                        </sql:query>
+                                        <c:forEach var="empleado" items="${areaE.rows}">
+                                            <c:set var="areaEmpleado" scope="page" value="${empleado.area}" />
+                                        </c:forEach>
                         
-                                        <form class="" name="solicitud" action="ProcesarJefeArea.jsp?idSolicitante=${loginEmpleado}" method="POST">
+                                        <form class="" name="solicitud" action="ProcesarJefeArea.jsp?idSolicitante=${loginEmpleado}&area=${areaEmpleado}" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Detalles</label>
                                                 <textarea rows="6" class="form-control" name="detalles" id="detalles" type="text">

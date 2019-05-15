@@ -14,13 +14,16 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Main JefeDesarrollo</title>
+        
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/custom.css">
+        
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <title>Main Jefe Desarrollo</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,7 +42,7 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo.jsp">Principal</a>
+                    <a class="nav-link active" href="mainJefeDesarrollo.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="mainJefeDesarrollo_solicitudes.jsp">Solicitudes</a>
@@ -63,64 +66,104 @@
         </div>
         <div class="container">
             <div class="container-responsive">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-3">
-                            <img class="card-img-top" src="https://picsum.photos/id/558/780/100" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Ultimos bitácoras de casos creados</h5>
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">#Caso</th>
-                                        <th scope="col">idBitacora</th>
-                                        <th scope="col">Programador</th>
-                                        <th scope="col">fecha</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>100123</td>
-                                        <td>Augusto Meza</td>
-                                        <td>2019-04-21 16:50:00</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <hr class="col-lg-12">
+                
+                <!--Solicitudes -->
+                <div class="row col-12">
+                    <h5 class="">Solicitudes</h5>
+                </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="solicitud_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 1
+                            </sql:query>
+                            <c:forEach var="sol_espera" items="${solicitud_1.rows}">
+                                <p><c:out value="${sol_espera.cantidad}"></c:out></p>
+                            </c:forEach>
                         </div>
+                        <p class="offset-lg-3">En espera</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
+                            <sql:query var="solicitud_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 3
+                            </sql:query>
+                            <c:forEach var="sol_aceptada" items="${solicitud_2.rows}">
+                                <p><c:out value="${sol_aceptada.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Aceptadas</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo3">
+                            <sql:query var="solicitud_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 2
+                            </sql:query>
+                            <c:forEach var="sol_rechazada" items="${solicitud_3.rows}">
+                                <p><c:out value="${sol_rechazada.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Rechazadas</p>
+                    </div>
+                    <div class="col-lg-3">
+                        
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
-                            <div class="card-header">Solicitudes</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de solicitudes</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
-                            <div class="card-header">Casos</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de casos</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
-                            <div class="card-header">Bitacoras</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de bitacoras</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
+                <hr class="col-lg-12">
+                
+                <!--Casos -->
+                <div class="row col-lg-12">
+                    <h5 class="">Casos</h5>
+                    
                 </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="caso_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 2
+                            </sql:query>
+                            <c:forEach var="caso_desarrollo" items="${caso_2.rows}">
+                                <p><c:out value="${caso_desarrollo.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">En Desarrollo</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
+                            <sql:query var="caso_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 6
+                            </sql:query>
+                            <c:forEach var="caso_finalizado" items="${caso_3.rows}">
+                                <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Finalizados</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo3">
+                            <sql:query var="caso_4" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 6
+                            </sql:query>
+                            <c:forEach var="caso_vencido" items="${caso_4.rows}">
+                                <p><c:out value="${caso_vencido.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Vencidos</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo4">
+                            <sql:query var="caso_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 5
+                            </sql:query>
+                            <c:forEach var="caso_espera" items="${caso_1.rows}">
+                                <p><c:out value="${caso_espera.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Devueltos</p>
+                    </div>
+                </div>  
             </div>
-        </div> 
+        </div>
     </body>
 </html>

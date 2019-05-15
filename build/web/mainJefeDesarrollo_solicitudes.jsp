@@ -4,12 +4,6 @@
     Author     : josea
 --%>
 
-<%-- 
-    Document   : mainJefeArea_solicitudes
-    Created on : 04-26-2019, 01:15:25 AM
-    Author     : josea
---%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
@@ -27,7 +21,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <title>Main Administrador - Empleados</title>
+        <title>Main Jefe Desarrollo - Solicitudes</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -46,13 +40,16 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeArea.jsp">Principal</a>
+                    <a class="nav-link" href="mainJefeDesarrollo.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
+                    <a class="nav-link active" href="mainJefeDesarrollo_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeArea_casos.jsp">Casos</a>
+                    <a class="nav-link" href="mainJefeDesarrollo_casos.jsp">Casos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
                 </li>
             </ul>
         </nav>
@@ -71,49 +68,28 @@
                 <div class="row">
                     <div class="col-2">
                         <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                          <a class="nav-link active pill-color-swap " id="v-pills-ver-tab" data-toggle="tab" href="#v-pills-ver" role="tab" 
-                             aria-controls="v-pills-ver" aria-selected="true">Solicitudes sin responder</a>
-                          <a class="nav-link pill-color-swap" id="v-pills-insertar-tab" data-toggle="tab" href="#v-pills-insertar" role="tab" 
-                             aria-controls="v-pills-insertar" aria-selected="false">Solicitudes resueltas</a>
+                            
+                            <a class="nav-link active pill-color-swap " id="espera-tab" data-toggle="tab" href="#pills-espera" role="tab" 
+                                  aria-controls="pills-espera" aria-selected="true">En espera</a>
+                            <a class="nav-link pill-color-swap " id="pills-rechazadas-tab" data-toggle="tab" href="#pills-rechazadas" role="tab" 
+                                aria-controls="pills-rechazadas" aria-selected="true">Rechazadas</a>
+                            <a class="nav-link pill-color-swap" id="pills-aceptadas-tab" data-toggle="tab" href="#pills-aceptadas" role="tab" 
+                               aria-controls="pills-aceptadas" aria-selected="false">Aceptadas</a>
+                            
                         </div>
                     </div>
                     <div class="col-10 border">
                         <br>
                         <div class="tab-content" id="v-pills-tabContent">
-                            <div class="tab-pane fade show active" id="v-pills-ver" role="tabpanel" aria-labelledby="v-pills-ver-tab">
+                            <div class="tab-pane fade show active" id="pills-espera" role="tabpanel" aria-labelledby="">
                                 <div class="col-md-12 border-dark">
-                                    <c:if test="${param.IngresoSolicitud eq 'Ingreso de solicitud'}">
-                                        <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                            <strong>Éxito! </strong>La solicitud fue ingresada satisfactoriamente
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <br>
-                                    </c:if>
-                                    <c:if test="${param.Eliminada eq 'Solicitud eliminada'}">
-                                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                            <strong>Éxito! </strong>La solicitud fue eliminado satisfactoriamente
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <br>
-                                    </c:if>
-                                    <c:if test="${param.Eliminada eq 'Solicitud actualizada'}">
-                                        <div class="alert alert-info alert-dismissible fade show" role="alert">
-                                            <strong>Éxito! </strong>La solicitud fue actualizada satisfactoriamente
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <br>
-                                    </c:if>
+                                    
                                     <div class="col-md-12">
-                                        <div class='form-group row'>
+                                        <div class='form-group form-inline'>
                                             <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Solicitud </label>
                                             <div class="col-md-8" >
                                                 <input type='text' class='form-control' id="inputBuscarUsuarios">
+                                                <button class="btn btn-dark">Buscar</button>
                                             </div>
                                         </div>
                                         <table class="table table-responsive-lg border">
@@ -121,7 +97,7 @@
                                               <tr>
                                                 <th scope="col">ID</th>
                                                 <th scope="col">Solicitante</th>
-                                                <th scope="col">estado</th>
+                                                <th scope="col">Área</th>
                                                 <th scope="col">Archivo</th>
                                                 <th scope="col">Creada</th>
                                                 <th scope="col" class=""></th>
@@ -138,19 +114,23 @@
                                                         solicitudes.detalleSolicitud,
                                                         solicitudes.archivoPdf,
                                                         solicitudes.fechaSolicitud,
-                                                        estadosdesolicitud.estadoSolicitud
+                                                        estadosdesolicitud.estadoSolicitud, 
+                                                        areas.nombreArea
                                                     from solicitudes
                                                     inner join empleados
                                                     on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
                                                     inner join estadosDeSolicitud
                                                     on estadosdesolicitud.idEstado = solicitudes.estado
+                                                    inner join areas
+                                                    on solicitudes.area = areas.idArea
+                                                    where solicitudes.estado = 1
                                                 </sql:query>
 
                                                 <c:forEach var="solicitudes" items="${se.rows}">
                                                     <tr>
                                                         <td width="10%"><c:out value="${solicitudes.idSolicitud}"></c:out></td>
                                                         <td width="20%"><c:out value="${solicitudes.nombres} ${solicitudes.apellidos}"></c:out></td>
-                                                        <td width="20%"><c:out value="${solicitudes.estadoSolicitud}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes.nombreArea}"></c:out></td>
                                                         <td width="20%"><c:out value="${solicitudes.archivoPdf}"></c:out></td>
                                                         <td width="15%"><c:out value="${solicitudes.fechaSolicitud}"></c:out></td>
                                                         <td width="5%">
@@ -161,8 +141,8 @@
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="ProcesarJefeArea.jsp?idSolicitudResponder=${solicitudes.idSolicitud}" class="btn btn-success  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">add</i> 
+                                                            <a href="respuestaSolicitud_JefeDesarrollo.jsp?idSolicitud=${solicitudes.idSolicitud}&idEmpleado=${loginEmpleado}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">forward</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -172,33 +152,156 @@
                                     </div>   
                                 </div>
                             </div>
-                            <div class="tab-pane fade" id="v-pills-insertar" role="tabpanel" aria-labelledby="v-pills-insertar-tab">
-                                <div class="justify-content-center">
-                                    <h3 class="text-center">Nueva solicitud</h3>
-                                    <br>
-                                    <div class="col-md-10 offset-md-1 ">
-                        
-                                        <form class="" name="solicitud" action="ProcesarJefeArea.jsp?idSolicitante=${loginEmpleado}" method="POST">
-                                            <div class="form-group">
-                                                <label class="" for="NombreUsuario">Detalles</label>
-                                                <textarea rows="6" class="form-control" name="detalles" id="detalles" type="text">
-                                                </textarea>
+                            
+                            <!--Pill Rechazadas-->
+                            <div class="tab-pane fade show" id="pills-rechazadas" role="tabpanel" aria-labelledby="">
+                                <div class="col-md-12 border-dark">
+                                    
+                                    <div class="col-md-12">
+                                        <div class='form-group form-inline'>
+                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Solicitud </label>
+                                            <div class="col-md-8" >
+                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
+                                                <button class="btn btn-dark">Buscar</button>
                                             </div>
-                                            <div class="form-group">
-                                                <label for="archivo">Archivo (opcional)</label>
-                                                <input type="file" class="form-control-file" name="archivo" id="archivo">
-                                            </div>
-                                            <div class="form-group">
-                                                <br>
-                                                <button class="btn btn-success float-right " type="submit">
-                                                   Enviar solicitud 
-                                                </button>
-                                                <br><br>
-                                            </div>    
-                                        </form>
-                                    </div>
+                                        </div>
+                                        <table class="table table-responsive-lg border">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Solicitante</th>
+                                                <th scope="col">Área</th>
+                                                <th scope="col">Archivo</th>
+                                                <th scope="col">Creada</th>
+                                                <th scope="col" class=""></th>
+                                                <th scope="col" class=""></th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <sql:query var="se2" dataSource="jdbc/mysql">
+                                                    select 
+                                                        solicitudes.idSolicitud,
+                                                        empleados.nombres,
+                                                        empleados.apellidos,
+                                                        solicitudes.detalleSolicitud,
+                                                        solicitudes.archivoPdf,
+                                                        solicitudes.fechaSolicitud,
+                                                        estadosdesolicitud.estadoSolicitud, 
+                                                        areas.nombreArea
+                                                    from solicitudes
+                                                    inner join empleados
+                                                    on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
+                                                    inner join estadosDeSolicitud
+                                                    on estadosdesolicitud.idEstado = solicitudes.estado
+                                                    inner join areas
+                                                    on solicitudes.area = areas.idArea
+                                                    where solicitudes.estado = 2
+                                                </sql:query>
+
+                                                <c:forEach var="solicitudes2" items="${se2.rows}">
+                                                    <tr>
+                                                        <td width="10%"><c:out value="${solicitudes2.idSolicitud}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes2.nombres} ${solicitudes.apellidos}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes2.nombreArea}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes2.archivoPdf}"></c:out></td>
+                                                        <td width="15%"><c:out value="${solicitudes2.fechaSolicitud}"></c:out></td>
+                                                        <td width="5%">
+                                                            <a href="" class="btn btn-info  d-flex justify-content-center align-content-between"
+                                                               data-toggle="modal" data-target="#modal${solicitudes2.idSolicitud}">
+                                                                <i class="material-icons mr-1">description</i> 
+                                                            </a>
+                                                        </td>
+                                                        
+                                                        <td width="5%">
+                                                            <a href="update_SolicitudJefeDesarrollo.jsp?idSolicitud=${solicitudes2.idSolicitud}" class="btn btn-warning  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">forward</i> 
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>   
                                 </div>
                             </div>
+                            
+                            <!--Pill Aceptadas--> 
+                            <div class="tab-pane fade show" id="pills-aceptadas" role="tabpanel" aria-labelledby="">
+                                <div class="col-md-12 border-dark">
+                                    
+                                    <div class="col-md-12">
+                                        <div class='form-group form-inline'>
+                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Solicitud </label>
+                                            <div class="col-md-8" >
+                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
+                                                <button class="btn btn-dark">Buscar</button>
+                                            </div>
+                                        </div>
+                                        <table class="table table-responsive-lg border">
+                                            <thead class="thead-dark">
+                                              <tr>
+                                                <th scope="col">ID</th>
+                                                <th scope="col">Solicitante</th>
+                                                <th scope="col">Área</th>
+                                                <th scope="col">Archivo</th>
+                                                <th scope="col">Creada</th>
+                                                <th scope="col" class=""></th>
+                                                <th scope="col" class=""></th>
+                                                
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                                <sql:query var="se3" dataSource="jdbc/mysql">
+                                                    select 
+                                                        solicitudes.idSolicitud,
+                                                        empleados.nombres,
+                                                        empleados.apellidos,
+                                                        solicitudes.detalleSolicitud,
+                                                        solicitudes.archivoPdf,
+                                                        solicitudes.fechaSolicitud,
+                                                        solicitudes.idEmpleadoSolicitante,
+                                                        estadosdesolicitud.estadoSolicitud, 
+                                                        areas.nombreArea
+                                                    from solicitudes
+                                                    inner join empleados
+                                                    on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
+                                                    inner join estadosDeSolicitud
+                                                    on estadosdesolicitud.idEstado = solicitudes.estado
+                                                    inner join areas
+                                                    on solicitudes.area = areas.idArea
+                                                    where solicitudes.estado = 3
+                                                </sql:query>
+
+                                                <c:forEach var="solicitudes3" items="${se3.rows}">
+                                                    <tr>
+                                                        <td width="10%"><c:out value="${solicitudes3.idSolicitud}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes3.nombres} ${solicitudes.apellidos}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes3.nombreArea}"></c:out></td>
+                                                        <td width="20%"><c:out value="${solicitudes3.archivoPdf}"></c:out></td>
+                                                        <td width="15%"><c:out value="${solicitudes3.fechaSolicitud}"></c:out></td>
+                                                        <td width="5%">
+                                                            <a href="" class="btn btn-info  d-flex justify-content-center align-content-between"
+                                                               data-toggle="modal" data-target="#modal${solicitudes3.idSolicitud}">
+                                                                <i class="material-icons mr-1">description</i> 
+                                                            </a>
+                                                        </td>
+                                                        
+                                                        <td width="5%">
+                                                            <a title="Crear Caso" 
+                                                               href="mainJefeDesarrollo_crearCaso.jsp?idSolicitudC=${solicitudes3.idSolicitud}&idEmpleado=${loginEmpleado}&idRevisor=${solicitudes3.idEmpleadoSolicitante}" 
+                                                               class="btn btn-success  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">forward</i> 
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
+                                            </tbody>
+                                        </table>
+                                    </div>   
+                                </div>
+                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -272,8 +375,7 @@
                 </div>
             </div>
         </div>
-        
-        
+
     </c:forEach>
     </body>
 </html>

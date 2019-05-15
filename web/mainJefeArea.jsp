@@ -59,64 +59,105 @@
         </div>
         <div class="container">
             <div class="container-responsive">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="card mb-3">
-                            <img class="card-img-top" src="https://picsum.photos/id/524/780/100" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Ultimos solicitudes creadas</h5>
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">ID Solicitud</th>
-                                        <th scope="col">Estado</th>
-                                        <th scope="col">Revisor</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>101036</td>
-                                        <td>Rechazada</td>
-                                        <td>José Meza</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                <hr class="col-lg-12">
+                
+                <!--Solicitudes -->
+                <div class="row col-12">
+                    <h5 class="">Solicitudes</h5>
+                </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="solicitud_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 1
+                            </sql:query>
+                            <c:forEach var="sol_espera" items="${solicitud_1.rows}">
+                                <p><c:out value="${sol_espera.cantidad}"></c:out></p>
+                            </c:forEach>
                         </div>
+                        <p class="offset-lg-3">En espera</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
+                            <sql:query var="solicitud_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 3
+                            </sql:query>
+                            <c:forEach var="sol_aceptada" items="${solicitud_2.rows}">
+                                <p><c:out value="${sol_aceptada.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Aceptadas</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo3">
+                            <sql:query var="solicitud_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 2
+                            </sql:query>
+                            <c:forEach var="sol_rechazada" items="${solicitud_3.rows}">
+                                <p><c:out value="${sol_rechazada.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Rechazadas</p>
+                    </div>
+                    <div class="col-lg-3">
+                        
                     </div>
                 </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-3 rounded">
-                        <div class="card border mb-3" >
-                            <div class="card-header">Solicitudes</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de solicitudes creadas</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 rounded">
-                        <div class="card border mb-3" >
-                            <div class="card-header">Solicitudes</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de estados de solicitudes</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3 rounded">
-                        <div class="card border mb-3" >
-                            <div class="card-header">Casos</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte caso por solicitud</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
+                <hr class="col-lg-12">
+                
+                <!--Casos -->
+                <div class="row col-lg-12">
+                    <h5 class="">Casos</h5>
+                    
                 </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="caso_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 1
+                            </sql:query>
+                            <c:forEach var="caso_espera" items="${caso_1.rows}">
+                                <p><c:out value="${caso_espera.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">En espera</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="caso_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 2
+                            </sql:query>
+                            <c:forEach var="caso_desarrollo" items="${caso_2.rows}">
+                                <p><c:out value="${caso_desarrollo.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">En Desarrollo</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
+                            <sql:query var="caso_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 6
+                            </sql:query>
+                            <c:forEach var="caso_finalizado" items="${caso_3.rows}">
+                                <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Finalizados</p>
+                    </div>
+                                        <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo4">
+                            <sql:query var="caso_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 3
+                            </sql:query>
+                            <c:forEach var="caso_finalizado" items="${caso_3.rows}">
+                                <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Esperando Aprobación</p>
+                    </div>
+                    
+                </div>  
             </div>
-        </div> 
+        </div>
     </body>
 </html>

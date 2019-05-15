@@ -110,7 +110,7 @@
                                                 </div>
                                             </div>
                                             <table class="table table-hover table-responsive-lg border">
-                                                <thead class="thead-ligth">
+                                                <thead class="thead-dark">
                                                   <tr>
                                                     <th scope="col">ID</th>
                                                     <th scope="col">Nombre usuario</th>
