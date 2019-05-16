@@ -48,9 +48,7 @@
                 <li class="nav-item">
                     <a class="nav-link" href="mainProgramador_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainProgramador_bitacoras.jsp">Bitácoras</a>
-                </li>
+                
             </ul>
         </nav>
         
@@ -100,7 +98,7 @@
                     <div class="col-lg-3">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo3">
                             <sql:query var="caso_4" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM casos WHERE estado = 6 and idProgramador = ?
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 4 and idProgramador = ?
                                 <sql:param value="${loginEmpleado}"/>
                             </sql:query>
                             <c:forEach var="caso_vencido" items="${caso_4.rows}">
@@ -121,7 +119,32 @@
                         </div>
                         <p class="offset-lg-3">Devueltos</p>
                     </div>
-                </div>  
+                </div>
+                <hr>
+                <br>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="caso_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 3 and idProgramador = ?
+                                <sql:param value="${loginEmpleado}"/>
+                            </sql:query>
+                            <c:forEach var="caso_desarrollo" items="${caso_2.rows}">
+                                <p><c:out value="${caso_desarrollo.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">En espera de revisión</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        
+                    </div>
+                    <div class="col-lg-3">
+                        
+                    </div>
+                </div> 
             </div>
         </div>
     </body>

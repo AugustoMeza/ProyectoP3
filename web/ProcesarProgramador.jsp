@@ -50,7 +50,19 @@
             </c:redirect>
         </c:if>
                 
-        
+        <!-- Cambiar estado en desarrollo -> esperando revisor -->
+        <c:if test="${param.cambiarEstado eq 2}">
+            <sql:update var="updEstado" dataSource="jdbc/mysql">
+                update casos set casos.estado = ? where idCaso = ?
+                <sql:param  value="${3}"/>
+                <sql:param  value="${param.idCaso}"/>
+  
+            </sql:update>
+            
+            <c:redirect url="mainProgramador.jsp">
+                <c:param name="idCaso" value="${param.idCaso}" /> 
+            </c:redirect>
+        </c:if>
         
     </body>
 </html>

@@ -45,7 +45,7 @@
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link d-flex justify-content-center align-content-between"
-                       href="mainJefeDesarrollo_casos.jsp">
+                       href="mainProgramador_casos.jsp">
                         <i class="material-icons mr-1">keyboard_backspace</i>Atrás</a>
                 </li>
             </ul>
@@ -145,6 +145,13 @@
                         
                         
                         <hr style="margin-top:24px">
+                        
+                        <c:if test="${(contador2/contador)*100 eq 100}">
+                            
+                            <a href="ProcesarProgramador.jsp?cambiarEstado=${2}&idCaso=${param.idCaso}" class="btn btn-success float-right">Enviar a revisión</a>
+                            <br>
+                        </c:if>
+                        
                         <h5>Bitácoras del caso</h5>
                         
                         <table class="table table-hover table-responsive-lg border">

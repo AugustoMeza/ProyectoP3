@@ -45,9 +45,7 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="mainProgramador_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainProgramador_bitacoras.jsp">Bitácoras</a>
-                </li>
+                
             </ul>
         </nav>
         
