@@ -12,7 +12,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Empleado</title>
+        <title>Main Empleado</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/custom.css">
         <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -37,10 +37,10 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainAdmin.jsp">Principal</a>
+                    <a class="nav-link border-bottom border-dark" href="mainJefeArea.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Casos</a>
+                    <a class="nav-link" href="mainEmpleado_casos.jsp">Casos</a>
                 </li>
             </ul>
         </nav>
@@ -55,44 +55,54 @@
         </div>
         <div class="container">
             <div class="container-responsive">
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="card mb-3">
-                            <img class="card-img-top" src="https://picsum.photos/id/524/780/100" alt="Card image cap">
-                            <div class="card-body">
-                                <h5 class="card-title">Ultimos casos asignados</h5>
-                                <table class="table">
-                                    <thead>
-                                      <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">ID caso</th>
-                                        <th scope="col">Estado</th>
-                                        <th scope="col">Programador</th>
-                                      </tr>
-                                    </thead>
-                                    <tbody>
-                                      <tr>
-                                        <th scope="row">1</th>
-                                        <td>101036</td>
-                                        <td>Completado</td>
-                                        <td>Augusto Meza</td>
-                                      </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                     <div class="col-md-3 rounded">
-                        <div class="card border-dark mb-3" >
-                            <div class="card-header">Casos</div>
-                            <div class="card-body">
-                                <h5 class="card-title">Generar un reporte de casos</h5>
-                                <a href="#" class="btn btn-dark">Generar</a>
-                            </div>
-                        </div>
-                    </div>
+                <hr class="col-lg-12">
+               
+                <!--Casos -->
+                <div class="row col-lg-12">
+                    <h5 class="">Casos</h5>
+                    
                 </div>
+                <div class="row col-lg-12">
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
+                            <sql:query var="caso_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 3 and idRevisor = ?
+                                <sql:param value="${loginEmpleado}"/>
+                            </sql:query>
+                            <c:forEach var="caso_espera" items="${caso_1.rows}">
+                                <p><c:out value="${caso_espera.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Casos sin revisar</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo4">
+                            <sql:query var="caso_2" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 5 and idRevisor = ?
+                                <sql:param value="${loginEmpleado}"/>
+                            </sql:query>
+                            <c:forEach var="caso_desarrollo" items="${caso_2.rows}">
+                                <p><c:out value="${caso_desarrollo.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Devueltos</p>
+                    </div>
+                    <div class="col-lg-3 ">
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
+                            <sql:query var="caso_3" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 6 and idRevisor = ?
+                                <sql:param value="${loginEmpleado}"/>
+                            </sql:query>
+                            <c:forEach var="caso_finalizado" items="${caso_3.rows}">
+                                <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Finalizados</p>
+                    </div>
+                    
+                    
+                </div>  
             </div>
-        </div> 
+        </div>
     </body>
 </html>

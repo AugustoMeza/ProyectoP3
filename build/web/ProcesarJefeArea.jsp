@@ -18,7 +18,7 @@
         <title>JSP Procesamiento de JefeArea</title>
     </head>
     <body>
-        <!-- Insert de solicitudes -->     
+    <!-- Insert de solicitudes -->     
     <c:if test="${not empty param.idSolicitante}">
         <jsp:useBean id="now" class="java.util.Date" />
         <fmt:formatDate var="fechaActual" value="${now}" pattern="YYYY-MM-dd" />
@@ -58,6 +58,18 @@
         </c:redirect>
      </c:if>
 
-    
+    <!-- Asignacion de empleado revisor -->     
+    <c:if test="${not empty param.idCaso && not empty param.idEmpleadoR}">
+        
+        <sql:update var="AsignarEmpleado" dataSource="jdbc/mysql">
+        update casos set idRevisor = ? where idCaso = ?
+        <sql:param value="${param.idEmpleadoR}"/>
+        <sql:param value="${param.idCaso}"/>
+
+        </sql:update>
+        <c:redirect url="mainJefeArea_bitacoras.jsp">
+            <c:param name="idCaso" value="${param.idCaso}"/>
+        </c:redirect>
+    </c:if>
     </body>
 </html>

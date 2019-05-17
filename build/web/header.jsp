@@ -22,7 +22,7 @@
             <a class="nav-link align-items-center" href="myProfile.jsp">
                 <button class="btn btn-sm btn-outline-light  d-flex justify-content-center align-content-between">
                     <i class="material-icons mr-1">account_box</i> Usuario: 
-                    <c:out value="${sessionScope['loginUserName']}"/>
+                    <c:out value="${sessionScope['loginEmpleadoNombre']}"/>
                     
                 </button>
             </a>

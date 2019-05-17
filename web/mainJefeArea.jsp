@@ -69,7 +69,8 @@
                     <div class="col-lg-3">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
                             <sql:query var="solicitud_1" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 1
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 1 and idEmpleadoSolicitante = ?
+                                <sql:param value="${loginEmpleado}"/>
                             </sql:query>
                             <c:forEach var="sol_espera" items="${solicitud_1.rows}">
                                 <p><c:out value="${sol_espera.cantidad}"></c:out></p>
@@ -80,7 +81,8 @@
                     <div class="col-lg-3">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
                             <sql:query var="solicitud_2" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 3
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 3 and idEmpleadoSolicitante = ?
+                                <sql:param value="${loginEmpleado}"/>
                             </sql:query>
                             <c:forEach var="sol_aceptada" items="${solicitud_2.rows}">
                                 <p><c:out value="${sol_aceptada.cantidad}"></c:out></p>
@@ -91,7 +93,8 @@
                     <div class="col-lg-3 ">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo3">
                             <sql:query var="solicitud_3" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 2
+                                SELECT count(*) as cantidad FROM solicitudes WHERE estado = 2 and idEmpleadoSolicitante = ?
+                                <sql:param value="${loginEmpleado}"/>
                             </sql:query>
                             <c:forEach var="sol_rechazada" items="${solicitud_3.rows}">
                                 <p><c:out value="${sol_rechazada.cantidad}"></c:out></p>
@@ -100,7 +103,16 @@
                         <p class="offset-lg-3">Rechazadas</p>
                     </div>
                     <div class="col-lg-3">
-                        
+                        <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo5">
+                            <sql:query var="caso_1" dataSource="jdbc/mysql">
+                                SELECT count(*) as cantidad FROM casos WHERE estado = 3 and idRevisor = ?
+                                <sql:param value="${loginEmpleado}"/>
+                            </sql:query>
+                            <c:forEach var="caso_espera" items="${caso_1.rows}">
+                                <p><c:out value="${caso_espera.cantidad}"></c:out></p>
+                            </c:forEach>
+                        </div>
+                        <p class="offset-lg-3">Casos sin asignar</p>
                     </div>
                 </div>
                 <hr class="col-lg-12">

@@ -40,17 +40,15 @@
         <nav class="navbar border">
             <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo.jsp">Principal</a>
+                    <a class="nav-link" href="mainJefeArea.jsp">Principal</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo_solicitudes.jsp">Solicitudes</a>
+                    <a class="nav-link" href="mainJefeArea_solicitudes.jsp">Solicitudes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="mainJefeDesarrollo_casos.jsp">Casos</a>
+                    <a class="nav-link active" href="mainJefeArea_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
-                </li>
+       
             </ul>
         </nav>
         
@@ -143,8 +141,8 @@
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="mainJefeDesarrollo_crearElementosCaso.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">forward</i> 
+                                                            <a href="mainJefeArea_bitacoras.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">bar_chart</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -214,8 +212,8 @@
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="mainJefeDesarrollo_crearElementosCaso.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">forward</i> 
+                                                            <a href="mainJefeArea_bitacoras.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">bar_chart</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -285,8 +283,8 @@
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="mainJefeDesarrollo_crearElementosCaso.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">forward</i> 
+                                                            <a href="mainJefeArea_bitacoras.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">bar_chart</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -356,8 +354,8 @@
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="mainJefeDesarrollo_crearElementosCaso.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">forward</i> 
+                                                            <a href="mainJefeArea_bitacoras.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">bar_chart</i> 
                                                             </a>
                                                         </td>
                                                     </tr>
@@ -422,13 +420,13 @@
                                                         <td width="5%">
                                                             <a href="" class="btn btn-info  d-flex justify-content-center align-content-between"
                                                                data-toggle="modal" data-target="#modal${casos1.idCaso}">
-                                                                <i class="material-icons mr-1">description</i> 
+                                                                <i class="material-icons mr-1">pageview</i> 
                                                             </a>
                                                         </td>
                                                         
                                                         <td width="5%">
-                                                            <a href="mainJefeDesarrollo_crearElementosCaso.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
-                                                                <i class="material-icons mr-1">forward</i> 
+                                                            <a href="mainJefeArea_bitacoras.jsp?idCaso=${casos1.idCaso}" class="btn btn-primary  d-flex justify-content-center align-content-between">
+                                                                <i class="material-icons mr-1">bar_chart</i> 
                                                             </a>
                                                         </td>
                                                     </tr>

@@ -27,7 +27,8 @@
         <c:if test="${not empty param.user and not empty param.pass}">
 
             <sql:query var="selectQ" dataSource="jdbc/mysql">
-                select idUsuario, tipoUsuario, idEmpleado from usuarios
+                select usuarios.idUsuario, usuarios.tipoUsuario, usuarios.idEmpleado, empleados.nombres as nombres,
+                empleados.apellidos as apellidos from usuarios inner join empleados on empleados.idEmpleado = usuarios.idEmpleado
                 where nombreUsuario ='${param.user}'
                 and passwordUsuario ='${param.pass}'
             </sql:query>
@@ -39,6 +40,7 @@
                       <c:when test="${r.tipoUsuario eq 1}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
                         <c:set scope="session" var="loginUserName" value="${param.user}"/>
+                        <c:set scope="session" var="loginEmpleadoNombre" value="${r.nombres} ${r.apellidos}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainAdmin.jsp"/>
@@ -48,6 +50,7 @@
                       <c:when test="${r.tipoUsuario eq 2}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
                         <c:set scope="session" var="loginUserName" value="${param.user}"/>
+                        <c:set scope="session" var="loginEmpleadoNombre" value="${r.nombres} ${r.apellidos}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainJefeDesarrollo.jsp"/>
@@ -57,6 +60,7 @@
                       <c:when test="${r.tipoUsuario eq 3}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
                         <c:set scope="session" var="loginUserName" value="${param.user}"/>
+                        <c:set scope="session" var="loginEmpleadoNombre" value="${r.nombres} ${r.apellidos}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainJefeArea.jsp"/>
@@ -66,6 +70,7 @@
                       <c:when test="${r.tipoUsuario eq 4}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
                         <c:set scope="session" var="loginUserName" value="${param.user}"/>
+                        <c:set scope="session" var="loginEmpleadoNombre" value="${r.nombres} ${r.apellidos}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainProgramador.jsp"/>
@@ -75,6 +80,7 @@
                       <c:when test="${r.tipoUsuario eq 5}">
                         <c:set scope="session" var="loginUser" value="${r.idUsuario}"/>
                         <c:set scope="session" var="loginUserName" value="${param.user}"/>
+                        <c:set scope="session" var="loginEmpleadoNombre" value="${r.nombres} ${r.apellidos}"/>
                         <c:set scope="session" var="loginTipo" value="${r.tipoUsuario}"/>
                         <c:set scope="session" var="loginEmpleado" value="${r.idEmpleado}"/>
                         <c:redirect url="mainEmpleado.jsp"/>
