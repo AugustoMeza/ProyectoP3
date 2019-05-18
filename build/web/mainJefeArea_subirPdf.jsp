@@ -1,8 +1,9 @@
 <%-- 
-    Document   : mainJefeDesarrollo_crearCaso
-    Created on : 05-14-2019, 05:16:07 PM
+    Document   : mainJefeArea_subirPdf
+    Created on : 05-17-2019, 08:13:28 PM
     Author     : josea
 --%>
+
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="x" uri="http://java.sun.com/jsp/jstl/xml" %>
@@ -45,7 +46,7 @@
             <ul class="nav justify-content-center">
                 <li class="nav-item">
                     <a class="nav-link d-flex justify-content-center align-content-between"
-                       href="mainJefeDesarrollo_solicitudes.jsp">
+                       href="mainJefeArea_solicitudes.jsp">
                         <i class="material-icons mr-1">keyboard_backspace</i>Atrás</a>
                 </li>
             </ul>
@@ -55,56 +56,36 @@
         <div class="container">
             <div class="container-responsive">
                 <div class="row col-lg-12">
-                    
-                    <div class="col-lg-8 offset-lg-2">
-                        <h4>Información caso</h4>
-                        <hr>
-                        <form action="ProcesarJefeDesarrollo.jsp" method="POST">
+                    <div class="col-lg-10 offset-lg-1">
+                        <h4>Agregar documento a la solicitud</h4>
+                        <hr><br>
+                        <form action="SubirArchivos" method="POST" enctype="multipart/form-data">
                             <div class="form-group sr-only">
-                                <input value="${param.idEmpleado}" name="idJefeDesarrollo" id="idJefeDesarrollo">
-                                <input value="${param.idSolicitudC}" name="idSolicitudCaso" id="idSolicitudCaso">
-                                <input value="${param.idRevisor}" name="idRevisor" id="idRevisor">
+                                <input value="${param.idSolicitud}" name="idSolicitud" id="idSolicitud">
                             </div>
-                            <div class="form-group">
-                                <label>Detalles del caso</label>
-                                <textarea class="form-control" rows="5" id="detalleCaso" name='detalleCaso'></textarea>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label>Porgramador a cargo</label>
-                                    <select class="form-control" id="idProgramador" name="idProgramador">
-                                        <option value=""> -- Seleccione un programador</option>
-                                        <sql:query var="programadores" dataSource="jdbc/mysql" >
-                                            Select * from empleados where jefe = ?
-                                            <sql:param value="${loginEmpleado}" />
-                                        </sql:query>
-                                        <c:forEach var="programador" items="${programadores.rows}">
-                                            <option value="${programador.idEmpleado}">${programador.nombres} ${programador.apellidos}</option>
-                                        </c:forEach>
-                                    </select>
+                              
+                            <div class="row col-12">
+                                <div class="form-group col-2 " id="">
+                                    <label>Archivo PDF</label>
                                 </div>
-                                <div class="form-group col">
-                                    <label>Fecha límite</label>
-                                    <input class="form-control"  type="text" id="fechaLimite" name="fechaLimite">
+                                <div class="form-group-file col-6" id="">
+                                    <input required id="archivoPdf" name="archivoPdf" type="file" accept="application/pdf">
+                                </div>
+                                <div class="form-group col-2" style="">
+                                    <button class="btn btn-primary float-right" type="reset">Limpiar</button>
+                                </div>
+                                <div class="form-group col-2" style="">
+                                    <button class="btn btn-success float-left" value="Subir Archivo" type="submit">Subir </button>
                                 </div>
                             </div>
-                               
-                            <div class="form-group ">
-                                <br>
-                                <button class="btn btn-success float-right">Crear caso</button>
-                            </div>
-                            
                         </form> 
                     </div>
-                </div>
+                </div>        
             </div>
         </div> 
     </body>
 </html>
 
 <script>
-    $('#fechaLimite').datepicker({
-        uiLibrary: 'bootstrap4',
-         format: 'yyyy-mm-dd'
-    });
+
 </script>

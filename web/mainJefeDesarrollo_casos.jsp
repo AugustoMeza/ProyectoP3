@@ -48,9 +48,6 @@
                 <li class="nav-item">
                     <a class="nav-link active" href="mainJefeDesarrollo_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
-                </li>
             </ul>
         </nav>
         
@@ -455,7 +452,8 @@
             (select nombres from empleados where idEmpleado = casos.idRevisor) as nombresRevisor, 
             (select apellidos from empleados where idEmpleado = casos.idRevisor ) as apellidosRevisor, 
             casos.fechaCreacion, 
-            casos.fechaLimite, 
+            casos.fechaLimite,
+            casos.archivoPdf,
             casos.detalleCaso, 
             estadoscaso.estado
         from casos 
@@ -514,7 +512,14 @@
                             </tbody>
                         </table>
                         
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Descargar Archivo</button>
+                        <c:if test="${empty casos.archivoPdf}">
+                            <a href="mainJefeDesarrollo_subirPdf.jsp?idCaso=${casos.idCaso}" type="button" class="btn btn-info" >Subir Archivo</a>
+                        </c:if>
+                        <c:if test="${not empty casos.archivoPdf}">
+                            <a href="mainJefeDesarrollo_subirPdf.jsp?idCaso=${casos.idCaso}" type="button" class="btn btn-success"> Agregar nuevo archivo</a>
+                            <a href="verPdf.jsp?pdf=${casos.archivoPdf}" type="button" class="btn btn-info">Ver archivo</a>
+                        </c:if>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

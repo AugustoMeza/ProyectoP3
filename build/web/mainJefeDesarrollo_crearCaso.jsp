@@ -88,17 +88,12 @@
                                     <input class="form-control"  type="text" id="fechaLimite" name="fechaLimite">
                                 </div>
                             </div>
-                            
-                            <div class="row">
-                                <div class="form-group col">
-                                    <label>Archivo PDF</label>
-                                    <input class="form-control-file btn-info border" type="file">
-                                </div>
-                                <div class="form-group col">
-                                    <br>
-                                    <button class="btn btn-success float-right">Crear caso</button>
-                                </div>
+                               
+                            <div class="form-group ">
+                                <br>
+                                <button class="btn btn-success float-right">Crear caso</button>
                             </div>
+                            
                         </form> 
                     </div>
                 </div>

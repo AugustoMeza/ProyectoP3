@@ -50,9 +50,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="mainJefeDesarrollo_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
-                </li>
             </ul>
         </nav>
         

@@ -48,9 +48,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="mainJefeDesarrollo_casos.jsp">Casos</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="mainJefeDesarrollo_bitacoras.jsp">Bitácoras</a>
-                </li>
             </ul>
         </nav>
         
@@ -367,7 +364,13 @@
                             </tbody>
                         </table>
                         
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Descargar Archivo</button>
+                        <c:if test="${empty sol.archivoPdf}">
+                            <p>No posee archivo PDF</p>
+                                
+                        </c:if>
+                        <c:if test="${not empty sol.archivoPdf}">
+                            <a href="verPdf.jsp?pdf=${sol.archivoPdf}" type="button" class="btn btn-info">Ver archivo</a>
+                        </c:if>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

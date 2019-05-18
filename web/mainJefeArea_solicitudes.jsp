@@ -173,7 +173,7 @@
                             <div class="tab-pane fade" id="v-pills-insertar" role="tabpanel" aria-labelledby="v-pills-insertar-tab">
                                 <div class="justify-content-center">
                                     <h3 class="text-center">Nueva solicitud</h3>
-                                    <br>
+                                    <p>* Si desea subir un archivo PDF con la información del caso, puede hacerlo luego de mandar una corta descripción desde este formulario</p>
                                     <div class="col-md-10 offset-md-1 ">
                                         <sql:query var="areaE" dataSource="jdbc/mysql">
                                             SELECT empleados.area from empleados where idEmpleado = ?
@@ -188,10 +188,6 @@
                                                 <label class="" for="NombreUsuario">Detalles</label>
                                                 <textarea rows="6" class="form-control" name="detalles" id="detalles" type="text">
                                                 </textarea>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="archivo">Archivo (opcional)</label>
-                                                <input type="file" class="form-control-file" name="archivo" id="archivo">
                                             </div>
                                             <div class="form-group">
                                                 <br>
@@ -269,7 +265,14 @@
                             </tbody>
                         </table>
                         
-                        <button type="button" class="btn btn-info" data-dismiss="modal">Descargar Archivo</button>
+                        <c:if test="${empty sol.archivoPdf}">
+                             <a href="mainJefeArea_subirPdf.jsp?idSolicitud=${sol.idSolicitud}" type="button" class="btn btn-info" >Subir Archivo</a>
+                        </c:if>
+                        <c:if test="${not empty sol.archivoPdf}">
+                            <a href="mainJefeArea_subirPdf.jsp?idSolicitud=${sol.idSolicitud}" type="button" class="btn btn-success"> Agregar nuevo archivo</a>
+                            <a href="verPdf.jsp?pdf=${sol.archivoPdf}" type="button" class="btn btn-info">Ver archivo</a>
+                        </c:if>
+                        
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
