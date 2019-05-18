@@ -151,7 +151,7 @@
                                         <form class="" name="areas" action="ProcesarAdmin.jsp" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Nombre de area</label>
-                                                <input class="form-control" name="nombreArea" id="nombreArea" type="text">
+                                                <input required class="form-control" name="nombreArea" id="nombreArea" type="text">
                                             </div>
                                             <div class="form-group">
                                                 <br>

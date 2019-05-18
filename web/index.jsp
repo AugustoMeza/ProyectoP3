@@ -49,11 +49,11 @@
                     <form action="ProcesarLogin.jsp" method="">
                         <div class="form-group">
                             <label>Usuario</label>
-                            <input class="form-control" type="text" name="user">
+                            <input required class="form-control" type="text" name="user">
                         </div> 
                         <div class="form-group">
                             <label>Contraseña</label>
-                            <input class="form-control" type="password" name="pass">
+                            <input required class="form-control" type="password" name="pass">
                         </div> 
                         <div class="form-group">
                             <button class="btn btn-info float-right  rounded-bottom">Iniciar sesión</button>

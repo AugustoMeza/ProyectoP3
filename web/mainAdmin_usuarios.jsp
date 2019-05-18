@@ -53,9 +53,6 @@
                 <li class="nav-item">
                     <a class="nav-link" href="mainAdmin_areas.jsp">Áreas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Registro DB</a>
-                </li>
             </ul>
         </nav>
         
@@ -103,12 +100,7 @@
                                     </c:if>
                                     <div class="card">
                                         <div class="card-body">
-                                            <div class='form-group row'>
-                                                <label class="col-sm-4 col-form-label" for='inputBuscarUsuarios'>Buscar usuario: </label>
-                                                <div class="col-sm-8" >
-                                                    <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                </div>
-                                            </div>
+                                            
                                             <table class="table table-hover table-responsive-lg border">
                                                 <thead class="thead-dark">
                                                   <tr>
@@ -168,7 +160,7 @@
                                         <form class="" action="ProcesarAdmin.jsp">
                                             <div class="form-group">    
                                                 <label class="" for="selectEmpleado">Empleado</label>
-                                                <select class="form-control" id="selectEmpleado" name="selectEmpleado">
+                                                <select required class="form-control" id="selectEmpleado" name="selectEmpleado">
                                                     <option>-- selecionar una opción</option>
                                                     <sql:query var="s1" dataSource="jdbc/mysql">
                                                         Select * from empleados 
@@ -182,15 +174,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Nombre de usuario</label>
-                                                <input class="form-control" id="nombreUsuario" name="nombreUsuario" type="text">
+                                                <input required class="form-control" id="nombreUsuario" name="nombreUsuario" type="text">
                                             </div>
                                             <div class="form-group">        
                                                 <label class="" for="contraUsuario">Contraseña</label>
-                                                <input class="form-control" id="contraUsuario" name="contraUsuario" type="password">
+                                                <input required class="form-control" id="contraUsuario" name="contraUsuario" type="password">
                                             </div>
                                             <div class="form-group">        
                                                 <label class="" for="selectTipo" >Tipo de usuario</label>
-                                                <select class="form-control" id="selectTipo" name="selectTipo">
+                                                <select required class="form-control" id="selectTipo" name="selectTipo">
                                                     <option>-- selecionar una opción</option>
                                                     <sql:query var="s0" dataSource="jdbc/mysql">
                                                         Select * from tipoUsuario 

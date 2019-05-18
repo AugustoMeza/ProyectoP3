@@ -66,14 +66,14 @@
                             
                             <div class="form-group">
                                 <label>Observación</label>
-                                <textarea class="form-control" style="width: 100%" id="detalles" name="detalles"
+                                <textarea required class="form-control" style="width: 100%" id="detalles" name="detalles"
                                           rows="3">
                                     
                                 </textarea>
                             </div>
                             <div class="form-group">
                                 <label>Estado del caso</label>
-                                <select class="form-control" name="estadoCaso" id="estadoCaso">
+                                <select required class="form-control" name="estadoCaso" id="estadoCaso">
                                     <option value=""> -- Selecionar un empleado -- </option>
                                     <option value="2"> Incompleto </option>
                                     <option value="3"> Completo </option>

@@ -21,7 +21,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <title>Main Administrador - Empleados</title>
+        <title>Main Jefe Area - solicitudes</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -137,7 +137,8 @@
                                                     inner join empleados
                                                     on empleados.idEmpleado = solicitudes.idEmpleadoSolicitante
                                                     inner join estadosDeSolicitud
-                                                    on estadosdesolicitud.idEstado = solicitudes.estado
+                                                    on estadosdesolicitud.idEstado = solicitudes.estado where solicitudes.idEmpleadoSolicitante = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="solicitudes" items="${se.rows}">
@@ -186,7 +187,7 @@
                                         <form class="" name="solicitud" action="ProcesarJefeArea.jsp?idSolicitante=${loginEmpleado}&area=${areaEmpleado}" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Detalles</label>
-                                                <textarea rows="6" class="form-control" name="detalles" id="detalles" type="text">
+                                                <textarea required rows="6" class="form-control" name="detalles" id="detalles" type="text">
                                                 </textarea>
                                             </div>
                                             <div class="form-group">

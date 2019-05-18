@@ -120,7 +120,8 @@
                                                     from casos 
                                                     inner join empleados on empleados.idEmpleado = casos.idProgramador 
                                                     inner join estadoscaso on estadoscaso.idEstado = casos.estado
-                                                    where casos.estado = 2
+                                                    where casos.estado = 2 and idJefeDesarrollo = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">
@@ -191,7 +192,8 @@
                                                     from casos 
                                                     inner join empleados on empleados.idEmpleado = casos.idProgramador 
                                                     inner join estadoscaso on estadoscaso.idEstado = casos.estado
-                                                    where casos.estado = 3
+                                                    where casos.estado = 3 and idJefeDesarrollo = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">
@@ -262,7 +264,8 @@
                                                     from casos 
                                                     inner join empleados on empleados.idEmpleado = casos.idProgramador 
                                                     inner join estadoscaso on estadoscaso.idEstado = casos.estado
-                                                    where casos.estado = 4
+                                                    where casos.estado = 4 and idJefeDesarrollo = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">
@@ -333,7 +336,8 @@
                                                     from casos 
                                                     inner join empleados on empleados.idEmpleado = casos.idProgramador 
                                                     inner join estadoscaso on estadoscaso.idEstado = casos.estado
-                                                    where casos.estado = 5
+                                                    where casos.estado = 5 and idJefeDesarrollo = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">
@@ -404,7 +408,8 @@
                                                     from casos 
                                                     inner join empleados on empleados.idEmpleado = casos.idProgramador 
                                                     inner join estadoscaso on estadoscaso.idEstado = casos.estado
-                                                    where casos.estado = 6
+                                                    where casos.estado = 6 and idJefeDesarrollo = ?
+                                                    <sql:param value="${loginEmpleado}"/>
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">

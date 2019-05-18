@@ -63,17 +63,17 @@
                             <h4>Respuesta de Solicitud</h4>
                             <hr>
                             <div class="form-group sr-only">
-                                <input value="${param.idSolicitud}" id="idSolicitudRespuesta" name="idSolicitudRespuesta">
+                                <input  value="${param.idSolicitud}" id="idSolicitudRespuesta" name="idSolicitudRespuesta">
                                 <input value="${param.idEmpleado}" id="idEmpleado" name="idEmpleado">
                             </div>
                             <div class="form-group">
                                 <label>Respuesta</label>
-                                <textarea class="form-control" id="respuesta" name="respuesta" rows="5"></textarea>
+                                <textarea required class="form-control" id="respuesta" name="respuesta" rows="5"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>Estado de la solicitud</label>
                                 <select class="form-control" id="estado" name="estado">
-                                    <option value="">-- Seleccionar una opción --</option>
+                                    <option required value="">-- Seleccionar una opción --</option>
                                     <option value="2">Rechazar Solicitud</option>
                                     <option value="3">Aceptar Solicitud</option>
                                 </select>

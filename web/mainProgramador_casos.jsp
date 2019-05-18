@@ -339,7 +339,7 @@
                                                 </sql:query>
 
                                                 <c:forEach var="casos1" items="${caso1.rows}">
-                                                    <tr class="bg-warning">
+                                                    <tr class="">
                                                         <td width="15%"><c:out value="${casos1.idCaso}"></c:out></td>
                                                         <td width="5%"><c:out value="${casos1.idSolicitud}"></c:out></td>
                                                         <td width="20%"><c:out value="${casos1.nombres} ${casos1.apellidos}"></c:out></td>

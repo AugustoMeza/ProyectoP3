@@ -100,12 +100,7 @@
                                     </c:if>
                                     <div class="card">
                                         <div class="card-body">
-                                            <div class='form-group row'>
-                                                <label class="col-sm-4 col-form-label" for='inputBuscarUsuarios'>Buscar cargo </label>
-                                                <div class="col-sm-8" >
-                                                    <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                </div>
-                                            </div>
+                                            
                                             <table class="table table-hover table-responsive-lg border">
                                                 <thead class="thead-dark">
                                                   <tr>
@@ -149,7 +144,7 @@
                                         <form class="" name="cargo" action="ProcesarAdmin.jsp" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="NombreUsuario">Nombre de cargo</label>
-                                                <input class="form-control" name="nombreCargo" id="nombreCargo" type="text">
+                                                <input required class="form-control" name="nombreCargo" id="nombreCargo" type="text">
                                             </div>
                                             <div class="form-group">
                                                 <br>

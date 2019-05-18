@@ -113,12 +113,7 @@
                                         <br>
                                     </c:if>
                                     <div class="col-md-12">
-                                        <div class='form-group row'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar empleado </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-hover table-responsive-lg border">
                                             <thead class="thead-dark">
                                               <tr>
@@ -220,15 +215,15 @@
                                         <form class="" name="empleados" action="ProcesarAdmin.jsp" method="POST">
                                             <div class="form-group">
                                                 <label class="" for="nombre">Nombre de empleado</label>
-                                                <input class="form-control" name="nombre" id="nombre" type="text">
+                                                <input required class="form-control" name="nombre" id="nombre" type="text">
                                             </div>
                                             <div class="form-group">
                                                 <label class="" for="apellido">Apellido de empleado</label>
-                                                <input class="form-control" name="apellido" id="apellido" type="text">
+                                                <input required class="form-control" name="apellido" id="apellido" type="text">
                                             </div>
                                             <div class="form-group">        
                                                 <label class="" for="selectCargo">Cargo</label>
-                                                <select class="form-control" name="selectCargo" id="selectCargo">
+                                                <select required class="form-control" name="selectCargo" id="selectCargo">
                                                     <option>-- selecionar una opción</option>
                                                     <sql:query var="s0" dataSource="jdbc/mysql">
                                                         Select * from cargos 
@@ -242,7 +237,7 @@
                                             </div>
                                             <div class="form-group">        
                                                 <label class="" for="selectArea">Área</label>
-                                                <select class="form-control" name="selectArea" id="selectArea">
+                                                <select required class="form-control" name="selectArea" id="selectArea">
                                                     <option>-- selecionar una opción</option>
                                                     <sql:query var="s1" dataSource="jdbc/mysql">
                                                         Select * from areas 
@@ -260,15 +255,15 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="" for="email">email</label>
-                                                <input class="form-control" name="email" id="email" type="text">
+                                                <input required class="form-control" name="email" id="email" type="text">
                                             </div>
                                             <div class="form-group">
                                                 <label class="" for="telefono">telefono</label>
-                                                <input class="form-control" name="telefono" id="telefono" type="text">
+                                                <input required class="form-control" name="telefono" id="telefono" type="text">
                                             </div>
                                             <div class="form-group">    
                                                 <label class="" for="selectEmpleado">Jefe</label>
-                                                <select class="form-control" name="selectJefe" id="selectJefe">
+                                                <select required class="form-control" name="selectJefe" id="selectJefe">
                                                     <option>-- selecionar una opción</option>
                                                     <sql:query var="s1" dataSource="jdbc/mysql">
                                                         Select * from empleados 

@@ -67,12 +67,12 @@
                             </div>
                             <div class="form-group">
                                 <label>Detalles del caso</label>
-                                <textarea class="form-control" rows="5" id="detalleCaso" name='detalleCaso'></textarea>
+                                <textarea required class="form-control" rows="5" id="detalleCaso" name='detalleCaso'></textarea>
                             </div>
                             <div class="row">
                                 <div class="form-group col">
                                     <label>Porgramador a cargo</label>
-                                    <select class="form-control" id="idProgramador" name="idProgramador">
+                                    <select required class="form-control" id="idProgramador" name="idProgramador">
                                         <option value=""> -- Seleccione un programador</option>
                                         <sql:query var="programadores" dataSource="jdbc/mysql" >
                                             Select * from empleados where jefe = ?
@@ -85,7 +85,7 @@
                                 </div>
                                 <div class="form-group col">
                                     <label>Fecha límite</label>
-                                    <input class="form-control"  type="text" id="fechaLimite" name="fechaLimite">
+                                    <input required class="form-control"  type="text" id="fechaLimite" name="fechaLimite">
                                 </div>
                             </div>
                                

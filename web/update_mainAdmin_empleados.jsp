@@ -72,22 +72,22 @@
                             <form class="" name="empleado" action="ProcesarAdmin.jsp" method="POST">
                                 <div class="form-group">
                                     <label class="" for="">ID de empleado</label>
-                                    <input class="form-control" name="idEmpleado" id="idEmpleado" type="text" disable
+                                    <input required class="form-control" name="idEmpleado" id="idEmpleado" type="text" disable
                                            value="${empleado.idEmpleado}">
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="">Nombre de empleado</label>
-                                    <input class="form-control" name="nombreU" id="nombreU" type="text" 
+                                    <input required class="form-control" name="nombreU" id="nombreU" type="text" 
                                            value="${empleado.nombres}">
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="">Apellido de empleado</label>
-                                    <input class="form-control" name="apellido" id="apellido" type="text"
+                                    <input required class="form-control" name="apellido" id="apellido" type="text"
                                            value="${empleado.apellidos}">
                                 </div>
                                 <div class="form-group">        
                                     <label class="" for="selectCargo">Cargo</label>
-                                    <select class="form-control" name="selectCargo" id="selectCargo">
+                                    <select required class="form-control" name="selectCargo" id="selectCargo">
                                         <option>-- selecionar una opción --</option>
                                         <sql:query var="s0" dataSource="jdbc/mysql">
                                             Select * from cargos 
@@ -108,7 +108,7 @@
                                 </div>
                                 <div class="form-group">        
                                     <label class="" for="selectArea">Área</label>
-                                    <select class="form-control" name="selectArea" id="selectArea">
+                                    <select required class="form-control" name="selectArea" id="selectArea">
                                         <option>-- selecionar una opción --</option>
                                         <sql:query var="s1" dataSource="jdbc/mysql">
                                             Select * from areas 
@@ -129,22 +129,22 @@
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="">Documento único de indentidad</label>
-                                    <input class="form-control" name="dui" id="dui" type="text"
+                                    <input required class="form-control" name="dui" id="dui" type="text"
                                            value="${empleado.documentoUnico}">
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="email">email</label>
-                                    <input class="form-control" name="email" id="email" type="text"
+                                    <input required class="form-control" name="email" id="email" type="text"
                                             value="${empleado.email}">
                                 </div>
                                 <div class="form-group">
                                     <label class="" for="telefono">telefono</label>
-                                    <input class="form-control" name="telefono" id="telefono" type="text"
+                                    <input required class="form-control" name="telefono" id="telefono" type="text"
                                             value="${empleado.telefono}">
                                 </div>
                                 <div class="form-group">    
                                     <label class="" for="selectEmpleado">Jefe</label>
-                                    <select class="form-control" name="selectJefe" id="selectJefe">
+                                    <select required class="form-control" name="selectJefe" id="selectJefe">
                                         <option>-- selecionar una opción --</option>
                                         <sql:query var="s1" dataSource="jdbc/mysql">
                                             Select * from empleados 
@@ -166,7 +166,7 @@
                                 </div>
                                 <div class="form-group">    
                                     <label class="" for="">Activo</label>
-                                    <select class="form-control" name="selectActivo" id="selectActivo">
+                                    <select required class="form-control" name="selectActivo" id="selectActivo">
                                         <option value="">-- selecionar una opción --</option>
                                         <c:if test="${empleado.activo == 0}">
                                             <option value="1"> Si</option>

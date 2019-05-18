@@ -101,7 +101,7 @@
             <sql:update var="cambioEstado" dataSource="jdbc/mysql">
                 insert into casos (idCaso, idSolicitud, idJefeDesarrollo, 
                 idProgramador, idRevisor, fechaCreacion, fechaLimite, detalleCaso,
-                estado) values (?,?,?,?,?,?,?,?,?)
+                estado, archivoPdf) values (?,?,?,?,?,?,?,?,?,?)
                 <sql:param value="${Caso.generarCodigo(areaCaso, now)}" />
                 <sql:param value="${param.idSolicitudCaso}" />
                 <sql:param value="${param.idJefeDesarrollo}" />
@@ -110,7 +110,8 @@
                 <sql:param value="${now}" />
                 <sql:param value="${param.fechaLimite}" />
                 <sql:param value="${param.detalleCaso}" />
-                <sql:param value="${1}" />
+                <sql:param value="${2}" />
+                <sql:param value="" />
 
             </sql:update>
 

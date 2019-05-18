@@ -28,7 +28,7 @@
         insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf, fechaSolicitud, estado, area) values (?,?,?,?,?,?)
         <sql:param value="${param.idSolicitante}"/>
         <sql:param value="${param.detalles}"/>
-        <sql:param value=" "/>
+        <sql:param value=""/>
         <sql:param value="${now}"/>
         <sql:param value="1"/>
         <sql:param value="${param.area}"/>

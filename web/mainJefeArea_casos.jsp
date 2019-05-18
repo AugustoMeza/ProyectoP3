@@ -87,13 +87,7 @@
                                 <div class="col-md-12 border-dark">
                                     
                                     <div class="col-md-12">
-                                        <div class='form-group form-inline'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Caso </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                <button class="btn btn-dark">Buscar</button>
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-responsive-lg border">
                                             <thead class="thead-dark">
                                               <tr >
@@ -158,13 +152,7 @@
                                 <div class="col-md-12 border-dark">
                                     
                                     <div class="col-md-12">
-                                        <div class='form-group form-inline'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Caso </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                <button class="btn btn-dark">Buscar</button>
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-responsive-lg border">
                                             <thead class="">
                                               <tr class="bg-info" style="color:white">
@@ -229,13 +217,7 @@
                                 <div class="col-md-12 border-dark">
                                     
                                     <div class="col-md-12">
-                                        <div class='form-group form-inline'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Caso </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                <button class="btn btn-dark">Buscar</button>
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-responsive-lg border">
                                             <thead class="">
                                                 <tr class="bg-danger" style="color:white;">
@@ -300,13 +282,7 @@
                                 <div class="col-md-12 border-dark">
                                     
                                     <div class="col-md-12">
-                                        <div class='form-group form-inline'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Caso </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                <button class="btn btn-dark">Buscar</button>
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-responsive-lg border">
                                             <thead class="">
                                               <tr class="bg-warning" style="color:white">
@@ -371,13 +347,7 @@
                                 <div class="col-md-12 border-dark">
                                     
                                     <div class="col-md-12">
-                                        <div class='form-group form-inline'>
-                                            <label class="col-md-4 col-form-label" for='inputBuscarUsuarios'>Buscar Caso </label>
-                                            <div class="col-md-8" >
-                                                <input type='text' class='form-control' id="inputBuscarUsuarios">
-                                                <button class="btn btn-dark">Buscar</button>
-                                            </div>
-                                        </div>
+                                        
                                         <table class="table table-responsive-lg border">
                                             <thead class="">
                                               <tr class="bg-success" style="color:white">

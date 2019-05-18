@@ -88,11 +88,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Respuesta</label>
-                                    <textarea class="form-control" id="respuesta" name="respuesta" rows="5"></textarea>
+                                    <textarea required class="form-control" id="respuesta" name="respuesta" rows="5"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>Estado de la solicitud</label>
-                                    <select class="form-control" id="estado" name="estado">
+                                    <select required class="form-control" id="estado" name="estado">
                                         <option value="">-- Seleccionar una opción --</option>
                                         <c:if test="${solicitud.estado eq 2}">
                                             <option selected value="2">Rechazar Solicitud</option>

@@ -48,6 +48,15 @@
                 </li>
             </ul>
         </nav>
+        <c:set var="areaEmpleado" value="" ></c:set>
+        <sql:query var="emp" dataSource="jdbc/mysql">
+            select area from empleados where idEmpleado = ?
+            <sql:param value="${loginEmpleado}"/>
+        </sql:query>
+        
+        <c:forEach var="emp1" items="${emp.rows}">
+            <c:set var="areaEmpleado" value="${emp1.area}" ></c:set>
+        </c:forEach>
         
         <br>
         <div class="container">
@@ -126,18 +135,28 @@
                     <div class="col-lg-3">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
                             <sql:query var="caso_1" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM casos WHERE estado = 1
+                                SELECT count(casos.idCaso) as cantidad, solicitudes.idSolicitud FROM 
+                                casos
+                                inner join solicitudes 
+                                on solicitudes.idSolicitud = casos.idSolicitud 
+                                WHERE casos.estado = 3 and solicitudes.area = ?
+                                <sql:param value="${areaEmpleado}" />
                             </sql:query>
                             <c:forEach var="caso_espera" items="${caso_1.rows}">
                                 <p><c:out value="${caso_espera.cantidad}"></c:out></p>
                             </c:forEach>
                         </div>
-                        <p class="offset-lg-3">En espera</p>
+                        <p class="offset-lg-3">En espera de aprobación</p>
                     </div>
                     <div class="col-lg-3">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo1">
                             <sql:query var="caso_2" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM casos WHERE estado = 2
+                                SELECT count(casos.idCaso) as cantidad, solicitudes.idSolicitud FROM 
+                                casos
+                                inner join solicitudes 
+                                on solicitudes.idSolicitud = casos.idSolicitud 
+                                WHERE casos.estado = 2 and solicitudes.area = ?
+                                <sql:param value="${areaEmpleado}" />
                             </sql:query>
                             <c:forEach var="caso_desarrollo" items="${caso_2.rows}">
                                 <p><c:out value="${caso_desarrollo.cantidad}"></c:out></p>
@@ -148,7 +167,12 @@
                     <div class="col-lg-3 ">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo2">
                             <sql:query var="caso_3" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM casos WHERE estado = 6
+                                SELECT count(casos.idCaso) as cantidad, solicitudes.idSolicitud FROM 
+                                casos
+                                inner join solicitudes 
+                                on solicitudes.idSolicitud = casos.idSolicitud 
+                                WHERE casos.estado = 6 and solicitudes.area = ?
+                                <sql:param value="${areaEmpleado}" />
                             </sql:query>
                             <c:forEach var="caso_finalizado" items="${caso_3.rows}">
                                 <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
@@ -159,13 +183,18 @@
                                         <div class="col-lg-3 ">
                         <div class="col-lg-6 offset-lg-3 shadow-sm border-bottom cuadro_informativo4">
                             <sql:query var="caso_3" dataSource="jdbc/mysql">
-                                SELECT count(*) as cantidad FROM casos WHERE estado = 3
+                                SELECT count(casos.idCaso) as cantidad, solicitudes.idSolicitud FROM 
+                                casos
+                                inner join solicitudes 
+                                on solicitudes.idSolicitud = casos.idSolicitud 
+                                WHERE casos.estado = 5 and solicitudes.area = ?
+                                <sql:param value="${areaEmpleado}" />
                             </sql:query>
                             <c:forEach var="caso_finalizado" items="${caso_3.rows}">
                                 <p><c:out value="${caso_finalizado.cantidad}"></c:out></p>
                             </c:forEach>
                         </div>
-                        <p class="offset-lg-3">Esperando Aprobación</p>
+                        <p class="offset-lg-3">Devueltos</p>
                     </div>
                     
                 </div>  

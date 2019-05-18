@@ -59,7 +59,7 @@
                         <hr>
                         <form action="ProcesarJefeDesarrollo.jsp" method="POST">
                             <div class="form-group sr-only">
-                                <input value="${param.idCaso}" name="idCaso" id="idCaso">
+                                <input  value="${param.idCaso}" name="idCaso" id="idCaso">
                             </div>
                               
                             <div class="row col-12">
@@ -69,7 +69,7 @@
                                 </div>
                                 <div class="form-group col-8" id="">
                                     
-                                    <input type="text" class="form-control" id="n1" name="n1"/>
+                                    <input required type="text" class="form-control" id="n1" name="n1"/>
                                 </div>
                                 <div class="form-group col-2" style="width:100%">
                                     

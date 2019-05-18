@@ -25,7 +25,7 @@
         <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
         <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
     
-        <title>Main Jefe Desarrollo - Crear Caso</title>
+        <title>Main Jefe Area - Asignar Empleado</title>
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -73,7 +73,7 @@
                                         SELECT idEmpleado, nombres, apellidos from empleados where jefe = ?
                                         <sql:param value="${loginEmpleado}" />
                                     </sql:query>
-                                    <select class="form-control" name="idEmpleadoR" id="idEmpleadoR">
+                                    <select required class="form-control" name="idEmpleadoR" id="idEmpleadoR">
                                          <option value=""> -- Selecionar un empleado -- </option>
 
                                          <c:forEach var="em" items="${empleadoAsignado.rows}">
