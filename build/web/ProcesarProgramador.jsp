@@ -17,6 +17,7 @@
     </head>
     <body>
         <jsp:useBean id="now" class="java.util.Date" />
+        <jsp:useBean id="EnviarEmail" scope="page" class="com.proyectop3.SendEmail"/>
         
         <!-- Agregar bitacora -->
         <c:if test="${not empty param.idElementoNuevo}">
@@ -58,6 +59,17 @@
                 <sql:param  value="${param.idCaso}"/>
   
             </sql:update>
+                
+                
+            <sql:query var="revisor" dataSource="jdbc/mysql">
+                select idRevisor from casos where idCaso = ?
+                <sql:param value="${param.idCaso}"/>
+            </sql:query>
+                <c:forEach var="rev" items="${revisor.rows}">
+                    <c:set var="enviarC" 
+                value="${EnviarEmail.SendMailCasoRevision(param.idCaso,EnviarEmail.getEmailFromEmpleado(rev.idRevisor))}"/>
+                </c:forEach>    
+                 
             
             <c:redirect url="mainProgramador.jsp">
                 <c:param name="idCaso" value="${param.idCaso}" /> 

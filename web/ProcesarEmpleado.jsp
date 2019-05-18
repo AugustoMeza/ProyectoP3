@@ -17,7 +17,7 @@
     </head>
     <body>
         <jsp:useBean id="now" class="java.util.Date" />
-        
+        <jsp:useBean id="EnviarEmail" scope="page" class="com.proyectop3.SendEmail"/>    
         <!-- Ingresar Observación -->
         <c:if test="${not empty param.idCaso && not empty param.detalles}">
             
@@ -43,6 +43,9 @@
                     <sql:param value="${param.idCaso}"/>
                 </sql:update>
                 
+                <c:set var="enviarC1" 
+                value="${EnviarEmail.SendMailCasoDevuelto(param.idCaso,EnviarEmail.getEmailFromEmpleado(param.idRevisor),param.detalles)}"/>
+                
                 <c:redirect url="mainEmpleado_observacion.jsp">
                     <c:param name="idCaso" value="${param.idCaso}" />
                 </c:redirect>
@@ -67,6 +70,9 @@
                     <sql:param value="${6}"/>
                     <sql:param value="${param.idCaso}"/>
                 </sql:update>
+                
+                <c:set var="enviarC2" 
+                value="${EnviarEmail.SendMailCasoFinalizado(param.idCaso,EnviarEmail.getEmailFromEmpleado(param.idRevisor))}"/>
                 
                 <c:redirect url="mainEmpleado_observacion.jsp">
                     <c:param name="idCaso" value="${param.idCaso}" />

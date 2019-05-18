@@ -19,6 +19,7 @@
     <body>
         <jsp:useBean id="now" class="java.util.Date" />
         <jsp:useBean id="Caso" scope="page" class="com.proyectop3.Casos"/>
+        <jsp:useBean id="EnviarEmail" scope="page" class="com.proyectop3.SendEmail"/>
         
         <fmt:formatDate var="fechaActual" value="${now}" pattern="YYYY-MM-dd" />
 
@@ -28,9 +29,13 @@
                 update solicitudes set estado = ? where idSolicitud = ?
                 <c:if test="${param.estado eq 2}">
                     <sql:param value="2" />
+                    <c:set var="enviarC" 
+                value="${EnviarEmail.SendMailSolicitudRechazada(param.idSolicitudRespuesta,EnviarEmail.getEmailFromEmpleado(param.idEmpleado))}"/> 
                 </c:if>
                 <c:if test="${param.estado eq 3}">
                     <sql:param value="3" />
+                    <c:set var="enviarC" 
+                value="${EnviarEmail.SendMailSolicitudAprobada(param.idSolicitudRespuesta,EnviarEmail.getEmailFromEmpleado(param.idEmpleado))}"/> 
                 </c:if>
                 <sql:param value="${param.idSolicitudRespuesta}" />
             </sql:update>
@@ -42,7 +47,11 @@
                 <sql:param value="${param.respuesta}"/>
                 <sql:param value="${now}"/>
             </sql:update>
-
+            
+                
+                
+                
+                    
             <c:redirect url="mainJefeDesarrollo.jsp">
 
             </c:redirect>

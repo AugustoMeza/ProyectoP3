@@ -54,9 +54,6 @@
                 <li class="nav-item">
                     <a class="nav-link border-bottom border-dark " href="mainAdmin_areas.jsp">Áreas</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Registro DB</a>
-                </li>
             </ul>
         </nav>
         

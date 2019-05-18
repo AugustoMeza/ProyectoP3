@@ -18,6 +18,8 @@
         <title>JSP Procesamiento de JefeArea</title>
     </head>
     <body>
+    <jsp:useBean id="EnviarEmail" scope="page" class="com.proyectop3.SendEmail"/>    
+        
     <!-- Insert de solicitudes -->     
     <c:if test="${not empty param.idSolicitante}">
         <jsp:useBean id="now" class="java.util.Date" />
@@ -26,7 +28,7 @@
         insert into solicitudes (idEmpleadoSolicitante, detalleSolicitud, archivoPdf, fechaSolicitud, estado, area) values (?,?,?,?,?,?)
         <sql:param value="${param.idSolicitante}"/>
         <sql:param value="${param.detalles}"/>
-        <sql:param value="${param.archivo}"/>
+        <sql:param value=" "/>
         <sql:param value="${now}"/>
         <sql:param value="1"/>
         <sql:param value="${param.area}"/>
@@ -67,6 +69,9 @@
         <sql:param value="${param.idCaso}"/>
 
         </sql:update>
+        
+         <c:set var="enviarC" 
+                value="${EnviarEmail.SendMailCasoAsigando(param.idCaso,EnviarEmail.getEmailFromEmpleado(param.idEmpleadoR))}"/>
         <c:redirect url="mainJefeArea_bitacoras.jsp">
             <c:param name="idCaso" value="${param.idCaso}"/>
         </c:redirect>

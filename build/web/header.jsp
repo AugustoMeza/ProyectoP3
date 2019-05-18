@@ -19,7 +19,7 @@
         </c:if>
  
         <li>
-            <a class="nav-link align-items-center" href="myProfile.jsp">
+            <a class="nav-link align-items-center" href="usuarioProfile.jsp">
                 <button class="btn btn-sm btn-outline-light  d-flex justify-content-center align-content-between">
                     <i class="material-icons mr-1">account_box</i> Usuario: 
                     <c:out value="${sessionScope['loginEmpleadoNombre']}"/>
